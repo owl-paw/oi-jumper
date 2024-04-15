@@ -33,12 +33,17 @@ submitButton.addEventListener('click', function () {
     return;
   }
 
+  if (inputValue === '114514') {
+    window.location.href('https://www.bilibili.com/video/BV1GJ411x7h7/');
+    return;
+  }
+
   if (judgeSelector.value === 'lg') {
     const re = /^[BP]?\d{4,5}$/;
     if (re.test(inputValue)) {
       var baseUrl = 'https://www.luogu.com.cn/problem/'
       if (inputValue[0] !== 'P' && inputValue[0] !== 'B') baseUrl = baseUrl + 'P';
-      window.location.href = baseUrl + inputValue;
+      window.open(baseUrl + inputValue, '_blank');
       return;
     }
   } else if (judgeSelector.value === 'lib') {
@@ -46,14 +51,14 @@ submitButton.addEventListener('click', function () {
     if (re.test(inputValue)) {
       var probId = inputValue;
       if (inputValue[0] === '#') probId = inputValue.substring(1);
-      window.location.href = 'https://loj.ac/p/' + probId;
+      window.open('https://loj.ac/p/' + probId, '_blank');
       return;
     }
   } else if (judgeSelector.value === 'cf') {
     const re = /^(\d{1,4})([a-zA-Z])$/;
     if (re.test(inputValue)) {
       const match = re.exec(inputValue);
-      window.location.href = 'https://codeforces.com/problemset/problem/' + match[1] + '/' + match[2];
+      window.open('https://codeforces.com/problemset/problem/' + match[1] + '/' + match[2], '_blank');
       return;
     }
   }
