@@ -1,7 +1,10 @@
+const theWord = document.getElementById('the-word');
 const inputBox = document.getElementById('input-box');
 const submitButton = document.getElementById('submit-button');
 const judgeSelector = document.getElementById('judge-selector');
 const darkModeToggler = document.getElementById('dark-mode-toggler');
+
+const words = ['sacrilege', 'javascript', 'code', 'love', 'madness', 'rage', 'intelligence', 'devotion', 'dedication', 'randomness', 'stupidity', 'bugs', 'coffee', 'magic', 'dreams', 'hatred', 'humor', '[REDACTED]'];
 
 darkModeToggler.addEventListener('click', function () {
   document.body.classList.toggle('dark');
@@ -24,6 +27,12 @@ function loadDarkModePreference() {
   }
 }
 
+function randomizeWord() { 
+  const randomWord = words[Math.floor(Math.random() * words.length)];
+  theWord.textContent = randomWord;
+}
+
+randomizeWord();
 loadDarkModePreference();
 
 submitButton.addEventListener('click', function () {
@@ -59,6 +68,28 @@ submitButton.addEventListener('click', function () {
     if (re.test(inputValue)) {
       const match = re.exec(inputValue);
       window.open('https://codeforces.com/problemset/problem/' + match[1] + '/' + match[2], '_blank');
+      return;
+    }
+  } else if (judgeSelector.value === 'uoj') {
+    const re = /^[#]?\d{1,3}$/;
+    if (re.test(inputValue)) {
+      var probId = inputValue;
+      if (inputValue[0] === '#') probId = inputValue.substring(1);
+      window.open('https://uoj.ac/problem/' + probId, '_blank');
+      return;
+    }
+  } else if (judgeSelector.value === 'pku') {
+    const re = /^[#]?\d{4}$/;
+    if (re.test(inputValue)) {
+      var probId = inputValue;
+      window.open('http://poj.org/problem?id=' + probId, '_blank');
+      return;
+    }
+  } else if (judgeSelector.value === 'hdu') {
+    const re = /^[#]?\d{4}$/;
+    if (re.test(inputValue)) {
+      var probId = inputValue;
+      window.open('https://acm.hdu.edu.cn/showproblem.php?pid=' + probId, '_blank');
       return;
     }
   }

@@ -8,7 +8,7 @@
         font-style: normal;
         font-weight: 400;
         font-display: swap;
-        src: url(JetBrainsMono-Regular.woff2) format("woff2");
+        src: local('JetBrains Mono Regular'), url(JetBrainsMono-Regular.woff2) format("woff2");
     }
 
     @font-face {
@@ -16,7 +16,7 @@
         font-style: normal;
         font-weight: 700;
         font-display: swap;
-        src: url(JetBrainsMono-Bold.woff2) format("woff2");
+        src: local('JetBrains Mono Bold'), url(JetBrainsMono-Bold.woff2) format("woff2");
     }
 
 }

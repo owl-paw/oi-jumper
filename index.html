@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh">
 
 <head>
   <meta charset="UTF-8">
@@ -12,13 +12,16 @@
 <body>
   <div class="h-screen w-screen text-center text-slate-700 font-mono dark:text-slate-300 dark:bg-slate-800">
     <div class="relative h-fit top-20 text-7xl font-bold">OI Jumper</div>
-    <div class="relative top-28 text-xl text-slate-600 dark:text-slate-400">made with love by Eoin Lee</div>
+    <div class="relative top-28 text-xl text-slate-600 dark:text-slate-400">made with <span id="the-word">randomness</span> by Eoin Lee</div>
     <div class="relative top-40 h-10 box-border">
       <select id="judge-selector"
         class="px-2 mx-1 h-10 border-2 bg-white border-slate-300 outline-none transition ease-in-out focus-within:border-slate-500 dark:bg-slate-800 dark:border-slate-700 dark:focus-within:border-slate-500">
-        <option value="lg" selected>Luogu</option>
+        <option value="lg" selected>洛谷 Luogu</option>
         <option value="lib">LibreOJ</option>
         <option value="cf">Codeforces</option>
+        <option value="uoj">UniversalOJ</option>
+        <option value="pku">北大 POJ</option>
+        <option value="hdu">杭电 HDU</option>
       </select>
       <input id="input-box" placeholder="Problem ID"
         class="text-center mx-1 px-6 outline-none h-10 border-2 border-slate-300 transition ease-in-out focus-within:border-slate-500 dark:border-slate-700 dark:focus-within:border-slate-500 dark:bg-slate-800" />

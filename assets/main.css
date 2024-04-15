@@ -455,7 +455,7 @@ video {
 
   font-display: swap;
 
-  src: url(JetBrainsMono-Regular.woff2) format("woff2");
+  src: local('JetBrains Mono Regular'), url(JetBrainsMono-Regular.woff2) format("woff2");
 }
 
 @font-face {
@@ -467,7 +467,7 @@ video {
 
   font-display: swap;
 
-  src: url(JetBrainsMono-Bold.woff2) format("woff2");
+  src: local('JetBrains Mono Bold'), url(JetBrainsMono-Bold.woff2) format("woff2");
 }
 
 *, ::before, ::after {
