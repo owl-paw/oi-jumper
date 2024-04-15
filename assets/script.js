@@ -34,7 +34,7 @@ submitButton.addEventListener('click', function () {
   }
 
   if (inputValue === '114514') {
-    window.location.href('https://www.bilibili.com/video/BV1GJ411x7h7/');
+    window.location.href = 'https://www.bilibili.com/video/BV1GJ411x7h7/';
     return;
   }
 
