@@ -33,6 +33,6 @@
     }
 
     .prob-info {
-        @apply h-8 px-4 mx-1 my-3 border-2 w-fit flex items-center justify-center bg-white border-slate-300 outline-none transition ease-in-out hover:border-slate-500 dark:bg-slate-800 dark:border-slate-700 dark:hover:border-slate-500;
+        @apply h-8 px-4 mx-1 my-3 w-fit flex items-center justify-center bg-slate-200 outline-none transition ease-in-out hover:bg-slate-300 hover:scale-105 dark:bg-slate-700 dark:hover:bg-slate-600;
     }
 }
