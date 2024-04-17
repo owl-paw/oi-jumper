@@ -1,9 +1,9 @@
-const inputBox = document.getElementById('input-box-prob-id');
-const submitButton = document.getElementById('submit-button');
-const judgeSelector = document.getElementById('judge-selector-prob-id');
+const inputBoxProbId = document.getElementById('input-box-prob-id');
+const submitButtonProbId = document.getElementById('submit-button-prob-id');
+const judgeSelectorProbId = document.getElementById('judge-selector-prob-id');
 
-submitButton.addEventListener('click', function () {
-  const inputValue = inputBox.value;
+submitButtonProbId.addEventListener('click', function () {
+  const inputValue = inputBoxProbId.value;
   if (!inputValue) {
     alert('Please enter a valid problem ID.');
     return;
@@ -14,7 +14,7 @@ submitButton.addEventListener('click', function () {
     return;
   }
 
-  if (judgeSelector.value === 'lg') {
+  if (judgeSelectorProbId.value === 'lg') {
     const re = /^[BP]?\d{4,5}$/;
     if (re.test(inputValue)) {
       var baseUrl = 'https://www.luogu.com.cn/problem/'
@@ -22,7 +22,7 @@ submitButton.addEventListener('click', function () {
       window.open(baseUrl + inputValue, '_blank');
       return;
     }
-  } else if (judgeSelector.value === 'lib') {
+  } else if (judgeSelectorProbId.value === 'lib') {
     const re = /^[#]?\d{1,5}$/
     if (re.test(inputValue)) {
       var probId = inputValue;
@@ -30,14 +30,14 @@ submitButton.addEventListener('click', function () {
       window.open('https://loj.ac/p/' + probId, '_blank');
       return;
     }
-  } else if (judgeSelector.value === 'cf') {
+  } else if (judgeSelectorProbId.value === 'cf') {
     const re = /^(\d{1,4})([a-zA-Z])$/;
     if (re.test(inputValue)) {
       const match = re.exec(inputValue);
       window.open('https://codeforces.com/problemset/problem/' + match[1] + '/' + match[2], '_blank');
       return;
     }
-  } else if (judgeSelector.value === 'uoj') {
+  } else if (judgeSelectorProbId.value === 'uoj') {
     const re = /^[#]?\d{1,3}$/;
     if (re.test(inputValue)) {
       var probId = inputValue;
@@ -45,14 +45,14 @@ submitButton.addEventListener('click', function () {
       window.open('https://uoj.ac/problem/' + probId, '_blank');
       return;
     }
-  } else if (judgeSelector.value === 'pku') {
+  } else if (judgeSelectorProbId.value === 'pku') {
     const re = /^[#]?\d{4}$/;
     if (re.test(inputValue)) {
       var probId = inputValue;
       window.open('http://poj.org/problem?id=' + probId, '_blank');
       return;
     }
-  } else if (judgeSelector.value === 'hdu') {
+  } else if (judgeSelectorProbId.value === 'hdu') {
     const re = /^[#]?\d{4}$/;
     if (re.test(inputValue)) {
       var probId = inputValue;
@@ -64,8 +64,8 @@ submitButton.addEventListener('click', function () {
   alert('Please enter a valid problem ID.');
 });
 
-inputBox.addEventListener('keydown', function (event) {
+inputBoxProbId.addEventListener('keydown', function (event) {
   if (event.key === 'Enter') {
-    submitButton.click();
+    submitButtonProbName.click();
   }
 });

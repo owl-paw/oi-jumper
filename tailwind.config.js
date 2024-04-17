@@ -10,4 +10,9 @@ module.exports = {
   },
   plugins: [],
   darkMode: 'class',
+  safelist: [
+    {
+      pattern: /prob-info/,
+    }
+  ]
 }

@@ -10,7 +10,7 @@
 </head>
 
 <body>
-  <div class="h-screen w-screen text-center text-slate-700 font-mono dark:text-slate-300 dark:bg-slate-800">
+  <div class="h-screen w-screen flex flex-col text-center items-center text-slate-700 font-mono dark:text-slate-300 dark:bg-slate-800">
     <!-- Page Title -->
     <div class="relative h-fit top-20 text-7xl font-bold">OI Jumper</div>
     <div class="relative top-28 text-xl text-slate-600 dark:text-slate-400">made with <span id="the-word"></span> by
@@ -27,14 +27,16 @@
         <option value="hdu">杭电 HDU</option>
       </select>
       <input id="input-box-prob-id" placeholder="Problem ID" class="text-center px-6 framed-box" />
-      <button id="submit-button" class="jump-button">JUMP</button>
+      <button id="submit-button-prob-id" class="jump-button">JUMP</button>
     </div>
 
     <!-- Problem Name Search -->
-    <div class="relative m-5 top-40 h-10 box-border">
-      <input id="input-box-prob-name" placeholder="Problem Name" class="text-center px-24 framed-box" />
-      <button id="submit-button" class="jump-button">FIND</button>
+    <div class="relative m-4 top-40 h-10 box-border">
+      <input id="input-box-prob-name" placeholder="Problem Name" class="text-center px-16 framed-box" />
+      <button id="submit-button-prob-name" class="jump-button">SEARCH LUOGU</button>
     </div>
+
+    <div id="prob-list-frame" class="relative top-40 mt-5 flex flex-col items-center"></div>
 
     <!-- Dark Mode Toggler -->
     <div class="fixed bottom-14 text-white text-center w-screen">
@@ -45,16 +47,15 @@
   <script>
     const theWord = document.getElementById('the-word');
     const words = ['sacrilege', 'javascript', 'code', 'love', 'madness', 'rage', 'intelligence', 'devotion', 'dedication', 'randomness', 'stupidity', 'bugs', 'coffee', 'magic', 'dreams', 'hatred', 'humor', '[REDACTED]'];
-
     function randomizeWord() {
       const randomWord = words[Math.floor(Math.random() * words.length)];
       theWord.textContent = randomWord;
     }
-
     randomizeWord();
   </script>
   <script src="./assets/dark-mode.js"></script>
   <script src="./assets/prob-id-jumper.js"></script>
+  <script src="./assets/prob-name-search.js"></script>
 </body>
 
 </html>
