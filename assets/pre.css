@@ -20,3 +20,13 @@
     }
 
 }
+
+@layer components {
+    .framed-box {
+        @apply h-10 mx-1 border-2 bg-white border-slate-300 outline-none transition ease-in-out focus-within:border-slate-500 dark:bg-slate-800 dark:border-slate-700 dark:focus-within:border-slate-500;
+    }
+    
+    .jump-button {
+        @apply bg-slate-700 mx-1 text-white px-4 h-10 hover:drop-shadow-lg transition ease-in-out dark:bg-slate-300 dark:text-slate-800;
+    }
+}

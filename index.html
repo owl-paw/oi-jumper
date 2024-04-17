@@ -11,11 +11,14 @@
 
 <body>
   <div class="h-screen w-screen text-center text-slate-700 font-mono dark:text-slate-300 dark:bg-slate-800">
+    <!-- Page Title -->
     <div class="relative h-fit top-20 text-7xl font-bold">OI Jumper</div>
-    <div class="relative top-28 text-xl text-slate-600 dark:text-slate-400">made with <span id="the-word">randomness</span> by Eoin Lee</div>
+    <div class="relative top-28 text-xl text-slate-600 dark:text-slate-400">made with <span id="the-word"></span> by
+      Eoin Lee</div>
+
+    <!-- Problem ID Jumper  -->
     <div class="relative top-40 h-10 box-border">
-      <select id="judge-selector"
-        class="px-2 mx-1 h-10 border-2 bg-white border-slate-300 outline-none transition ease-in-out focus-within:border-slate-500 dark:bg-slate-800 dark:border-slate-700 dark:focus-within:border-slate-500">
+      <select id="judge-selector-prob-id" class="px-2 h-10 framed-box">
         <option value="lg" selected>洛谷 Luogu</option>
         <option value="lib">LibreOJ</option>
         <option value="cf">Codeforces</option>
@@ -23,16 +26,35 @@
         <option value="pku">北大 POJ</option>
         <option value="hdu">杭电 HDU</option>
       </select>
-      <input id="input-box" placeholder="Problem ID"
-        class="text-center mx-1 px-6 outline-none h-10 border-2 border-slate-300 transition ease-in-out focus-within:border-slate-500 dark:border-slate-700 dark:focus-within:border-slate-500 dark:bg-slate-800" />
-      <button id="submit-button"
-        class="bg-slate-700 mx-1 text-white px-4 h-10 hover:drop-shadow-lg transition ease-in-out dark:bg-slate-300 dark:text-slate-800">JUMP</button>
+      <input id="input-box-prob-id" placeholder="Problem ID" class="text-center px-6 framed-box" />
+      <button id="submit-button" class="jump-button">JUMP</button>
     </div>
-    <div id="list-frame"></div>
+
+    <!-- Problem Name Search -->
+    <div class="relative m-5 top-40 h-10 box-border">
+      <input id="input-box-prob-name" placeholder="Problem Name" class="text-center px-24 framed-box" />
+      <button id="submit-button" class="jump-button">FIND</button>
+    </div>
+
+    <!-- Dark Mode Toggler -->
     <div class="fixed bottom-14 text-white text-center w-screen">
-      <button id="dark-mode-toggler" class="bg-slate-700 mx-1 px-4 h-10 opacity-25 transition ease-in-out hover:opacity-100 dark:bg-slate-300 dark:text-slate-800"></button>
+      <button id="dark-mode-toggler"
+        class="bg-slate-700 mx-1 px-4 h-10 opacity-25 transition ease-in-out hover:opacity-100 dark:bg-slate-300 dark:text-slate-800"></button>
     </div>
   </div>
-  <script src="./assets/script.js"></script>
+  <script>
+    const theWord = document.getElementById('the-word');
+    const words = ['sacrilege', 'javascript', 'code', 'love', 'madness', 'rage', 'intelligence', 'devotion', 'dedication', 'randomness', 'stupidity', 'bugs', 'coffee', 'magic', 'dreams', 'hatred', 'humor', '[REDACTED]'];
+
+    function randomizeWord() {
+      const randomWord = words[Math.floor(Math.random() * words.length)];
+      theWord.textContent = randomWord;
+    }
+
+    randomizeWord();
+  </script>
+  <script src="./assets/dark-mode.js"></script>
+  <script src="./assets/prob-id-jumper.js"></script>
 </body>
+
 </html>
