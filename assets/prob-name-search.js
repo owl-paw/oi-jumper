@@ -6,7 +6,7 @@ listFrame.textContent = '';
 
 submitButtonProbName.addEventListener('click', function () {
   const inputValue = inputBoxProbName.value;
-  const formedUrl = `https://www.luogu.com.cn/problem/list?keyword=${inputValue}&type=B|P&page=1&_contentOnly=1`
+  const formedUrl = `https://corsproxy.io/?https://www.luogu.com.cn/problem/list?keyword=${inputValue}&type=B|P&page=1&_contentOnly=1`
   fetch(formedUrl).then(Response => Response.json()).then(
     data => {
       const problemList = data.currentData.problems.result;
