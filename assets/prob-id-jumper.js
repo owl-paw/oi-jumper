@@ -66,6 +66,6 @@ submitButtonProbId.addEventListener('click', function () {
 
 inputBoxProbId.addEventListener('keydown', function (event) {
   if (event.key === 'Enter') {
-    submitButtonProbName.click();
+    submitButtonProbId.click();
   }
 });
