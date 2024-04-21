@@ -4,15 +4,10 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'mono': ['"JetBrains Mono"', 'monospace']
+        'mono': ['"JetBrains Mono"', 'Consolas', 'Menlo', 'monospace']
       }
     },
   },
   plugins: [],
   darkMode: 'class',
-  safelist: [
-    {
-      pattern: /prob-info/,
-    }
-  ]
 }

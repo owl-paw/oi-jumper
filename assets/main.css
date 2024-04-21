@@ -135,7 +135,7 @@ code,
 kbd,
 samp,
 pre {
-  font-family: "JetBrains Mono", monospace;
+  font-family: "JetBrains Mono", Consolas, Menlo, monospace;
   /* 1 */
   font-feature-settings: normal;
   /* 2 */
@@ -583,9 +583,6 @@ video {
 }
 
 .framed-box {
-  margin-left: 0.25rem;
-  margin-right: 0.25rem;
-  height: 2.5rem;
   border-width: 2px;
   --tw-border-opacity: 1;
   border-color: rgb(203 213 225 / var(--tw-border-opacity));
@@ -596,8 +593,8 @@ video {
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
-  transition-duration: 150ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
 }
 
 .framed-box:focus-within {
@@ -618,20 +615,15 @@ video {
 }
 
 .jump-button {
-  margin-left: 0.25rem;
-  margin-right: 0.25rem;
-  height: 2.5rem;
   --tw-bg-opacity: 1;
   background-color: rgb(51 65 85 / var(--tw-bg-opacity));
-  padding-left: 1rem;
-  padding-right: 1rem;
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
-  transition-duration: 150ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
 }
 
 .jump-button:hover {
@@ -646,87 +638,41 @@ video {
   color: rgb(30 41 59 / var(--tw-text-opacity));
 }
 
-.prob-info {
-  margin-left: 0.25rem;
-  margin-right: 0.25rem;
-  margin-top: 0.75rem;
-  margin-bottom: 0.75rem;
-  display: flex;
-  height: 2rem;
-  width: -moz-fit-content;
-  width: fit-content;
-  align-items: center;
-  justify-content: center;
-  --tw-bg-opacity: 1;
-  background-color: rgb(226 232 240 / var(--tw-bg-opacity));
-  padding-left: 1rem;
-  padding-right: 1rem;
-  outline: 2px solid transparent;
-  outline-offset: 2px;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
-  transition-duration: 150ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+.mx-2 {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 }
 
-.prob-info:hover {
-  --tw-scale-x: 1.05;
-  --tw-scale-y: 1.05;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-  --tw-bg-opacity: 1;
-  background-color: rgb(203 213 225 / var(--tw-bg-opacity));
+.mb-10 {
+  margin-bottom: 2.5rem;
 }
 
-.prob-info:is(.dark *) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(51 65 85 / var(--tw-bg-opacity));
+.ml-2 {
+  margin-left: 0.5rem;
 }
 
-.prob-info:hover:is(.dark *) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(71 85 105 / var(--tw-bg-opacity));
+.mr-2 {
+  margin-right: 0.5rem;
 }
 
-.fixed {
-  position: fixed;
+.mt-10 {
+  margin-top: 2.5rem;
 }
 
-.relative {
-  position: relative;
+.mt-20 {
+  margin-top: 5rem;
 }
 
-.bottom-14 {
-  bottom: 3.5rem;
+.mt-4 {
+  margin-top: 1rem;
 }
 
-.top-20 {
-  top: 5rem;
+.mt-8 {
+  margin-top: 2rem;
 }
 
-.top-28 {
-  top: 7rem;
-}
-
-.top-40 {
-  top: 10rem;
-}
-
-.m-4 {
-  margin: 1rem;
-}
-
-.mx-1 {
-  margin-left: 0.25rem;
-  margin-right: 0.25rem;
-}
-
-.mt-5 {
-  margin-top: 1.25rem;
-}
-
-.box-border {
-  box-sizing: border-box;
+.mt-auto {
+  margin-top: auto;
 }
 
 .flex {
@@ -737,17 +683,37 @@ video {
   height: 2.5rem;
 }
 
-.h-fit {
-  height: -moz-fit-content;
-  height: fit-content;
-}
-
 .h-screen {
   height: 100vh;
 }
 
 .w-screen {
   width: 100vw;
+}
+
+.min-w-40 {
+  min-width: 10rem;
+}
+
+.min-w-fit {
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+}
+
+.max-w-xl {
+  max-width: 36rem;
+}
+
+.flex-shrink {
+  flex-shrink: 1;
+}
+
+.flex-shrink-0 {
+  flex-shrink: 0;
+}
+
+.basis-80 {
+  flex-basis: 20rem;
 }
 
 .flex-col {
@@ -758,14 +724,13 @@ video {
   align-items: center;
 }
 
+.justify-center {
+  justify-content: center;
+}
+
 .bg-slate-700 {
   --tw-bg-opacity: 1;
   background-color: rgb(51 65 85 / var(--tw-bg-opacity));
-}
-
-.px-16 {
-  padding-left: 4rem;
-  padding-right: 4rem;
 }
 
 .px-2 {
@@ -778,17 +743,20 @@ video {
   padding-right: 1rem;
 }
 
-.px-6 {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-}
-
 .text-center {
   text-align: center;
 }
 
+.text-justify {
+  text-align: justify;
+}
+
+.align-middle {
+  vertical-align: middle;
+}
+
 .font-mono {
-  font-family: "JetBrains Mono", monospace;
+  font-family: "JetBrains Mono", Consolas, Menlo, monospace;
 }
 
 .text-7xl {
@@ -803,6 +771,10 @@ video {
 
 .font-bold {
   font-weight: 700;
+}
+
+.leading-10 {
+  line-height: 2.5rem;
 }
 
 .text-slate-600 {
@@ -824,16 +796,16 @@ video {
   opacity: 0.25;
 }
 
+.opacity-50 {
+  opacity: 0.5;
+}
+
 .transition {
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
-}
-
-.ease-in-out {
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .hover\:opacity-100:hover {

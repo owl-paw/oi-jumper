@@ -2,6 +2,9 @@ const inputBoxProbId = document.getElementById('input-box-prob-id');
 const submitButtonProbId = document.getElementById('submit-button-prob-id');
 const judgeSelectorProbId = document.getElementById('judge-selector-prob-id');
 
+const inputBoxProbName = document.getElementById('input-box-prob-name');
+const submitButtonProbName = document.getElementById('submit-button-prob-name');
+
 submitButtonProbId.addEventListener('click', function () {
   const inputValue = inputBoxProbId.value;
   if (!inputValue) {
@@ -67,5 +70,17 @@ submitButtonProbId.addEventListener('click', function () {
 inputBoxProbId.addEventListener('keydown', function (event) {
   if (event.key === 'Enter') {
     submitButtonProbId.click();
+  }
+});
+
+submitButtonProbName.addEventListener('click', function () {
+  const inputValue = inputBoxProbName.value;
+  const formedUrl = `https://www.luogu.com.cn/problem/list?keyword=${inputValue}&type=B|P&page=1`
+  window.open(formedUrl, '_blank');
+});
+
+inputBoxProbName.addEventListener('keydown', function (event) {
+  if (event.key === 'Enter') {
+    submitButtonProbName.click();
   }
 });
