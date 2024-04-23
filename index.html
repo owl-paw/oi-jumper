@@ -12,21 +12,23 @@
 <body>
   <div class="flex flex-col h-screen items-center font-mono text-slate-700 dark:text-slate-300 dark:bg-slate-800">
     <!-- Page Title -->
-    <div class="mt-20 text-7xl font-bold">OI Jumper</div>
-    <div class="mt-8 text-xl text-slate-600 dark:text-slate-400">made with <span id="the-word"></span> by
+    <div class="mt-20 text-7xl font-bold"><a href="/">OI Jumper</a></div>
+    <div class="mt-8 text-xl text-slate-600 dark:text-slate-400">made with <a href="/"><span id="the-word"></span></a> by
       Eoin Lee</div>
 
     <!-- Problem Jumper  -->
     <div class="flex mt-10 h-10 w-screen min-w-fit justify-center">
       <select id="judge-selector-prob-id" class="px-2 mr-2 min-w-40 framed-box flex-shrink-0">
-        <option value="lg" selected>洛谷 Luogu</option>
-        <option value="lib">LibreOJ</option>
+        <option value="bz">BZOJ</option>
         <option value="cf">Codeforces</option>
+        <option value="hdu">HDU 杭电</option>
+        <option value="lib">LibreOJ</option>
+        <option value="lg" selected>Luogu 洛谷</option>
+        <option value="pku">POJ 北大</option>
+        <option value="sp">SPOJ</option>
         <option value="uoj">UniversalOJ</option>
-        <option value="pku">北大 POJ</option>
-        <option value="hdu">杭电 HDU</option>
       </select>
-      <input id="input-box-prob-id" placeholder="Problem ID"
+      <input id="input-box-prob-id" placeholder="enter problem id"
         class="mx-2 text-center framed-box basis-80 min-w-fit max-w-xl flex-shrink" />
       <button id="submit-button-prob-id" class="ml-2 px-4 jump-button">JUMP</button>
     </div>
@@ -34,9 +36,12 @@
     <!-- Problem Name Search -->
     <div class="flex mt-4 h-10 w-screen min-w-fit justify-center">
       <select id="judge-selector-prob-name" class="px-2 mr-2 min-w-40 framed-box flex-shrink-0">
-        <option value="lg" selected>洛谷 Luogu</option>
+        <option value="acw">AcWing</option>
+        <option value="bz">BZOJ</option>
+        <option value="lib">LibreOJ</option>
+        <option value="lg" selected>Luogu 洛谷</option>
       </select>
-      <input id="input-box-prob-name" placeholder="Problem Name"
+      <input id="input-box-prob-name" placeholder="search by problem name"
         class="mx-2 text-center min-w-fit basis-80 framed-box" />
       <button id="submit-button-prob-name" class="ml-2 px-4 jump-button">FIND</button>
     </div>
@@ -44,37 +49,33 @@
     <!-- Dark Mode Toggler -->
     <div class="flex justify-center mt-auto mb-10 text-white w-screen h-10">
       <button id="dark-mode-toggler"
-        class="bg-slate-700 mr-2 px-4 transition opacity-50 hover:opacity-100 dark:bg-slate-300 dark:text-slate-800"></button>
-      <a href="https://github.com/eoinli/oi-jumper" target="_blank" class="bg-slate-700 ml-2 px-4 transition opacity-50 hover:opacity-100 dark:bg-slate-300 dark:text-slate-800 leading-10">View GitHub Repo</a>
+        class="bg-slate-700 mr-2 px-4 transition opacity-50 hover:opacity-100 dark:bg-slate-300 dark:text-slate-800">Toggle
+        Appearance</button>
+      <a href="https://github.com/eoinli/oi-jumper" target="_blank"
+        class="bg-slate-700 ml-2 px-4 transition opacity-50 hover:opacity-100 dark:bg-slate-300 dark:text-slate-800 leading-10">View
+        GitHub Repo</a>
     </div>
   </div>
+
   <script>
-    const darkModeToggler = document.getElementById('dark-mode-toggler');
     const theWord = document.getElementById('the-word');
-    const words = ['sacrilege', 'javascript', 'code', 'love', 'madness', 'rage', 'intelligence', 'devotion', 'dedication', 'randomness', 'stupidity', 'bugs', 'coffee', 'magic', 'dreams', 'hatred', 'humor', '[数据删除]'];
+    const darkModeToggler = document.getElementById('dark-mode-toggler');
 
     darkModeToggler.addEventListener('click', function () {
       document.body.classList.toggle('dark');
       const isDarkMode = document.body.classList.contains('dark');
       localStorage.setItem('darkModePreference', isDarkMode);
-      if (isDarkMode) {
-        darkModeToggler.textContent = 'Toggle Light Mode';
-      } else {
-        darkModeToggler.textContent = 'Toggle Dark Mode';
-      }
     });
 
     function loadDarkModePreference() {
       const storedPreference = localStorage.getItem('darkModePreference');
       if (storedPreference === 'true') {
         document.body.classList.add('dark');
-        darkModeToggler.textContent = 'Toggle Light Mode';
-      } else {
-        darkModeToggler.textContent = 'Toggle Dark Mode';
       }
     }
 
     function randomizeWord() {
+      const words = ['sacrilege', 'javascript', 'code', 'love', 'madness', 'rage', 'intelligence', 'devotion', 'dedication', 'randomness', 'stupidity', 'bugs', 'coffee', 'magic', 'dreams', 'hatred', 'humor', '[数据删除]'];
       const randomWord = words[Math.floor(Math.random() * words.length)];
       theWord.textContent = randomWord;
     }

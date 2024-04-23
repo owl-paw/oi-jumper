@@ -1,12 +1,19 @@
 const inputBoxProbId = document.getElementById('input-box-prob-id');
-const submitButtonProbId = document.getElementById('submit-button-prob-id');
-const judgeSelectorProbId = document.getElementById('judge-selector-prob-id');
-
 const inputBoxProbName = document.getElementById('input-box-prob-name');
+const submitButtonProbId = document.getElementById('submit-button-prob-id');
 const submitButtonProbName = document.getElementById('submit-button-prob-name');
 
+function openLink(url) {
+  var popUp = window.open(url);
+  if (!popUp || popUp.closed || typeof popUp.closed == 'undefined') {
+    alert('Your browser blocked us from opening the targeted page. Try adding this site to your exception list in your browser\'s settings to ensure its functionality.')
+  }
+}
+
 submitButtonProbId.addEventListener('click', function () {
+  const judgeSelectorProbId = document.getElementById('judge-selector-prob-id');
   const inputValue = inputBoxProbId.value;
+
   if (!inputValue) {
     alert('Please enter a valid problem ID.');
     return;
@@ -22,7 +29,7 @@ submitButtonProbId.addEventListener('click', function () {
     if (re.test(inputValue)) {
       var baseUrl = 'https://www.luogu.com.cn/problem/'
       if (inputValue[0] !== 'P' && inputValue[0] !== 'B') baseUrl = baseUrl + 'P';
-      window.open(baseUrl + inputValue, '_blank');
+      openLink(baseUrl + inputValue);
       return;
     }
   } else if (judgeSelectorProbId.value === 'lib') {
@@ -30,14 +37,14 @@ submitButtonProbId.addEventListener('click', function () {
     if (re.test(inputValue)) {
       var probId = inputValue;
       if (inputValue[0] === '#') probId = inputValue.substring(1);
-      window.open('https://loj.ac/p/' + probId, '_blank');
+      openLink('https://loj.ac/p/' + probId);
       return;
     }
   } else if (judgeSelectorProbId.value === 'cf') {
     const re = /^(\d{1,4})([a-zA-Z])$/;
     if (re.test(inputValue)) {
       const match = re.exec(inputValue);
-      window.open('https://codeforces.com/problemset/problem/' + match[1] + '/' + match[2], '_blank');
+      openLink('https://codeforces.com/problemset/problem/' + match[1] + '/' + match[2]);
       return;
     }
   } else if (judgeSelectorProbId.value === 'uoj') {
@@ -45,23 +52,34 @@ submitButtonProbId.addEventListener('click', function () {
     if (re.test(inputValue)) {
       var probId = inputValue;
       if (inputValue[0] === '#') probId = inputValue.substring(1);
-      window.open('https://uoj.ac/problem/' + probId, '_blank');
+      openLink('https://uoj.ac/problem/' + probId);
       return;
     }
   } else if (judgeSelectorProbId.value === 'pku') {
     const re = /^[#]?\d{4}$/;
     if (re.test(inputValue)) {
       var probId = inputValue;
-      window.open('http://poj.org/problem?id=' + probId, '_blank');
+      openLink('http://poj.org/problem?id=' + probId);
       return;
     }
   } else if (judgeSelectorProbId.value === 'hdu') {
     const re = /^[#]?\d{4}$/;
     if (re.test(inputValue)) {
       var probId = inputValue;
-      window.open('https://acm.hdu.edu.cn/showproblem.php?pid=' + probId, '_blank');
+      openLink('https://acm.hdu.edu.cn/showproblem.php?pid=' + probId);
       return;
     }
+  } else if (judgeSelectorProbId.value === 'bz') {
+    const re = /^[P]?\d{3,5}$/;
+    if (re.test(inputValue)) {
+      var baseUrl = 'https://new.bzoj.org:88/p/'
+      if (inputValue[0] !== 'P') baseUrl = baseUrl + 'P';
+      openLink(baseUrl + inputValue);
+      return;
+    }
+  } else if (judgeSelectorProbId.value === 'sp') {
+    openLink(`https://www.spoj.com/problems/${inputValue}/`);
+    return;
   }
 
   alert('Please enter a valid problem ID.');
@@ -74,9 +92,26 @@ inputBoxProbId.addEventListener('keydown', function (event) {
 });
 
 submitButtonProbName.addEventListener('click', function () {
+  const judgeSelectorProbName = document.getElementById('judge-selector-prob-name');
   const inputValue = inputBoxProbName.value;
-  const formedUrl = `https://www.luogu.com.cn/problem/list?keyword=${inputValue}&type=B|P&page=1`
-  window.open(formedUrl, '_blank');
+
+  if (!inputValue) {
+    alert('Please enter something as the search term.');
+    return;
+  }
+
+  var formedUrl;
+
+  if (judgeSelectorProbName.value === 'lg') {
+    formedUrl = `https://www.luogu.com.cn/problem/list?keyword=${inputValue}&type=B|P&page=1`;
+  } else if (judgeSelectorProbName.value === 'lib') {
+    formedUrl = `https://loj.ac/p?keyword=${inputValue}`;
+  } else if (judgeSelectorProbName.value === 'bz') {
+    formedUrl = `https://new.bzoj.org:88/p?q=${inputValue}`
+  } else if (judgeSelectorProbName.value === 'acw')
+    formedUrl = `https://www.acwing.com/problem/search/1/?search_content=${inputValue}`
+
+  openLink(formedUrl);
 });
 
 inputBoxProbName.addEventListener('keydown', function (event) {
