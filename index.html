@@ -10,17 +10,23 @@
 </head>
 
 <body>
-  <div class="flex flex-col h-screen items-center font-mono text-slate-700 dark:text-slate-300 dark:bg-slate-800">
+  <div
+    class="flex flex-col w-screen h-screen items-center font-mono bg-slate-200 text-slate-700 dark:text-slate-300 dark:bg-slate-800">
     <!-- Page Title -->
-    <div class="mt-20 text-7xl font-bold"><a href="/">OI Jumper</a></div>
-    <div class="mt-8 text-xl text-slate-600 dark:text-slate-400">made with <a href="/"><span id="the-word"></span></a> by
-      Eoin Lee</div>
+    <div class="text-5xl sm:text-7xl mt-12 sm:mt-20 font-bold">
+      <a href="#">OI Jumper</a>
+    </div>
+    <div class="mt-5 sm:mt-8 text-lg sm:text-xl text-center text-slate-600 dark:text-slate-400">
+      made with <span id="the-word"></span> <br class="sm:hidden" /> by Eoin Lee
+    </div>
 
     <!-- Problem Jumper  -->
-    <div class="flex mt-10 h-10 w-screen min-w-fit justify-center">
-      <select id="judge-selector-prob-id" class="px-2 mr-2 min-w-40 framed-box flex-shrink-0">
+    <div class="flex mt-6 sm:mt-10 text-sm sm:text-base h-7 sm:h-10 w-screen min-w-fit justify-center">
+      <select id="judge-selector-prob-id"
+        class="px-1 sm:px-2 mr-1 sm:mr-2 min-w-20 sm:min-w-40 framed-box basis-28 sm:basis-40">
         <option value="bz">BZOJ</option>
         <option value="cf">Codeforces</option>
+        <option value="dm">DMOJ</option>
         <option value="hdu">HDU 杭电</option>
         <option value="lib">LibreOJ</option>
         <option value="lg" selected>Luogu 洛谷</option>
@@ -28,32 +34,35 @@
         <option value="sp">SPOJ</option>
         <option value="uoj">UniversalOJ</option>
       </select>
-      <input id="input-box-prob-id" placeholder="enter problem id"
-        class="mx-2 text-center framed-box basis-80 min-w-fit max-w-xl flex-shrink" />
-      <button id="submit-button-prob-id" class="ml-2 px-4 jump-button">JUMP</button>
+      <input id="input-box-prob-id" placeholder="problem id"
+        class="mx-1.5 sm:mx-2 text-center framed-box basis-40 sm:basis-80 min-w-20 sm:min-w-40 max-w-xl focus-within:placeholder:text-transparent" />
+      <button id="submit-button-prob-id" class="ml-1 sm:ml-2 px-2 sm:px-4 jump-button min-w-fit">JUMP</button>
     </div>
 
     <!-- Problem Name Search -->
-    <div class="flex mt-4 h-10 w-screen min-w-fit justify-center">
-      <select id="judge-selector-prob-name" class="px-2 mr-2 min-w-40 framed-box flex-shrink-0">
+    <div class="flex mt-2 sm:mt-4 text-sm sm:text-base h-7 sm:h-10 w-screen min-w-fit justify-center">
+      <select id="judge-selector-prob-name"
+        class="px-1 sm:px-2 mr-1 sm:mr-2 min-w-20 sm:min-w-40 framed-box basis-28 sm:basis-40">
         <option value="acw">AcWing</option>
         <option value="bz">BZOJ</option>
+        <option value="dm">DMOJ</option>
         <option value="lib">LibreOJ</option>
         <option value="lg" selected>Luogu 洛谷</option>
+        <option value="uoj">UniversalOJ</option>
       </select>
-      <input id="input-box-prob-name" placeholder="search by problem name"
-        class="mx-2 text-center min-w-fit basis-80 framed-box" />
-      <button id="submit-button-prob-name" class="ml-2 px-4 jump-button">FIND</button>
+      <input id="input-box-prob-name" placeholder="problem name"
+        class="mx-1.5 sm:mx-2 text-center framed-box basis-40 sm:basis-80 min-w-20 sm:min-w-40 max-w-xl focus-within:placeholder:text-transparent" />
+      <button id="submit-button-prob-name" class="ml-1 sm:ml-2 px-2 sm:px-4 jump-button min-w-fit">FIND</button>
     </div>
 
     <!-- Dark Mode Toggler -->
-    <div class="flex justify-center mt-auto mb-10 text-white w-screen h-10">
-      <button id="dark-mode-toggler"
-        class="bg-slate-700 mr-2 px-4 transition opacity-50 hover:opacity-100 dark:bg-slate-300 dark:text-slate-800">Toggle
-        Appearance</button>
-      <a href="https://github.com/eoinli/oi-jumper" target="_blank"
-        class="bg-slate-700 ml-2 px-4 transition opacity-50 hover:opacity-100 dark:bg-slate-300 dark:text-slate-800 leading-10">View
-        GitHub Repo</a>
+    <div class="flex justify-center mt-auto mb-7 sm:mb-10 text-white w-screen h-7 sm:h-10 text-sm sm:text-base">
+      <button id="dark-mode-toggler" class="mr-3 px-4 jump-button">
+        <span class="hidden sm:inline">Toggle </span>Appearance
+      </button>
+      <a href="https://github.com/eoinli/oi-jumper" target="_blank" class="ml-3 px-4 leading-7 sm:leading-10 jump-button">
+        <span class="hidden sm:inline">View On </span>GitHub
+      </a>
     </div>
   </div>
 
@@ -75,7 +84,7 @@
     }
 
     function randomizeWord() {
-      const words = ['sacrilege', 'javascript', 'code', 'love', 'madness', 'rage', 'intelligence', 'devotion', 'dedication', 'randomness', 'stupidity', 'bugs', 'coffee', 'magic', 'dreams', 'hatred', 'humor', '[数据删除]'];
+      const words = ['???', 'morality', 'faith', 'time', 'atoms', 'science', 'regret', 'respect', 'sacrilege', 'javascript', 'code', 'love', 'madness', 'rage', 'intelligence', 'devotion', 'dedication', 'randomness', 'stupidity', 'bugs', 'coffee', 'magic', 'dreams', 'hatred', 'humor', '[REDACTED]'];
       const randomWord = words[Math.floor(Math.random() * words.length)];
       theWord.textContent = randomWord;
     }

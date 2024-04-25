@@ -80,6 +80,9 @@ submitButtonProbId.addEventListener('click', function () {
   } else if (judgeSelectorProbId.value === 'sp') {
     openLink(`https://www.spoj.com/problems/${inputValue}/`);
     return;
+  } else if (judgeSelectorProbId.value === 'dm') {
+    openLink(`https://dmoj.ca/problem/${inputValue}`);
+    return;
   }
 
   alert('Please enter a valid problem ID.');
@@ -108,8 +111,13 @@ submitButtonProbName.addEventListener('click', function () {
     formedUrl = `https://loj.ac/p?keyword=${inputValue}`;
   } else if (judgeSelectorProbName.value === 'bz') {
     formedUrl = `https://new.bzoj.org:88/p?q=${inputValue}`
-  } else if (judgeSelectorProbName.value === 'acw')
+  } else if (judgeSelectorProbName.value === 'acw') {
     formedUrl = `https://www.acwing.com/problem/search/1/?search_content=${inputValue}`
+  } else if (judgeSelectorProbName.value === 'dm') {
+    formedUrl = `https://dmoj.ca/problems/?search=${inputValue}`
+  } else if (judgeSelectorProbName.value === 'uoj') {
+    formedUrl = `https://uoj.ac/problems?search=${inputValue}`
+  }
 
   openLink(formedUrl);
 });
