@@ -14,7 +14,7 @@
 
 @layer components {
     .framed-box {
-        @apply border-b-4 bg-white border-slate-300 outline-none transition focus-within:border-slate-400 dark:bg-slate-900 dark:border-slate-700 dark:focus-within:border-slate-500;
+        @apply border-2 bg-white border-slate-300 outline-none transition focus-within:border-slate-400 dark:bg-slate-900 dark:border-slate-700 dark:focus-within:border-slate-500;
     }
     
     .jump-button {
