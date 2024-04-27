@@ -3,21 +3,21 @@
 @tailwind utilities;
 
 @layer base {
-    @font-face {
-        font-family: 'JetBrains Mono';
-        font-style: normal;
-        font-display: swap;
-        src: url('./JetBrainsMono\[wght\].woff2') format("woff2-variations");
-        font-feature-settings: "zero";
-    }
+  @font-face {
+    font-family: "JetBrains Mono";
+    font-style: normal;
+    font-display: swap;
+    src: url("./JetBrainsMono\[wght\].woff2") format("woff2-variations");
+    font-feature-settings: "zero";
+  }
 }
 
 @layer components {
-    .framed-box {
-        @apply border-2 bg-white border-slate-300 outline-none transition focus-within:border-slate-400 dark:bg-slate-900 dark:border-slate-700 dark:focus-within:border-slate-500;
-    }
-    
-    .jump-button {
-        @apply bg-slate-700 text-white font-normal dark:bg-slate-300 dark:text-slate-800 transition opacity-50 hover:opacity-100;
-    }
+  .framed-box {
+    @apply border-2 bg-white border-slate-300 outline-none transition focus-within:border-slate-400 dark:bg-slate-900 dark:border-slate-700 dark:focus-within:border-slate-500;
+  }
+
+  .jump-button {
+    @apply bg-slate-700 text-white font-normal dark:bg-slate-300 dark:text-slate-800 transition opacity-50 hover:opacity-100;
+  }
 }
