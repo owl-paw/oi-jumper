@@ -127,6 +127,10 @@ submitButtonProbName.addEventListener("click", function () {
     formedUrl = `https://dmoj.ca/problems/?search=${inputValue}`;
   } else if (judgeSelectorProbName.value === "uoj") {
     formedUrl = `https://uoj.ac/problems?search=${inputValue}`;
+  } else if (judgeSelectorProbName.value === "cf") {
+    formedUrl = `https://www.google.com/search?q=${inputValue}+site%3Acodeforces.com`;
+  } else if (judgeSelectorProbName.value === "at") {
+    formedUrl = `https://www.google.com/search?q=${inputValue}+site%3Aatcoder.jp`;
   }
 
   openLink(formedUrl);
