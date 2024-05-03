@@ -51,6 +51,22 @@
   }
 
   #bottom-frame {
-    @apply mb-0 mt-6 flex h-7 w-screen justify-center text-sm text-white sm:mb-10 sm:mt-auto sm:h-10 sm:text-base;
+    @apply mb-0 mt-2 flex h-7 w-screen justify-center text-sm text-white sm:mb-10 sm:mt-10 sm:h-10 sm:text-base;
+  }
+
+  #htkt-frame {
+    @apply flex flex-col text-sm sm:text-base mt-4 mb-2 sm:mt-auto sm:mb-5 p-2 sm:p-5 mx-2 rounded-md bg-slate-300 dark:bg-slate-900 min-w-72 max-w-xl sm:min-w-[35rem] sm:max-w-[35rem] flex-shrink;
+  }
+
+  #htkt-title {
+    @apply font-bold text-left text-xs sm:text-sm text-slate-600 dark:text-slate-400;
+  }
+
+  #htkt {
+    @apply text-center my-1 sm:my-4 overflow-y-hidden max-h-20 overflow-hidden;
+  }
+
+  #htkt-src {
+    @apply text-xs sm:text-sm text-right text-slate-500 overflow-x-hidden;
   }
 }

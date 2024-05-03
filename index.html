@@ -52,6 +52,12 @@
         <button id="submit-button-prob-name" class="jump-button">FIND</button>
       </section>
 
+      <section id="htkt-frame">
+        <button id="htkt-title">一言 / Hitokoto</button>
+        <p id="htkt">Loading</p>
+        <span id="htkt-src">Loading</span>
+      </section>
+
       <!-- Bottom Info -->
       <footer id="bottom-frame">
         <button id="dark-mode-toggler" class="jump-button mr-3 px-4">
@@ -69,12 +75,42 @@
 
     <script type="text/javascript">
       const theWord = document.getElementById("the-word");
+      const htktTrigger = document.getElementById("htkt-title");
+      const htktContent = document.getElementById("htkt");
+      const htktSource = document.getElementById("htkt-src");
       const darkModeToggler = document.getElementById("dark-mode-toggler");
 
       darkModeToggler.addEventListener("click", function () {
         document.body.classList.toggle("dark");
         const isDarkMode = document.body.classList.contains("dark");
         localStorage.setItem("darkModePreference", isDarkMode);
+      });
+
+      function loadHitokoto() {
+        var script = document.createElement("script");
+        script.setAttribute("type", "text/javascript");
+        script.src =
+          "https://international.v1.hitokoto.cn/?callback=respondHitokoto";
+        script.id = "jsonp";
+        document.body.appendChild(script);
+      }
+
+      function respondHitokoto(data) {
+        const res = JSON.parse(data);
+        htktContent.textContent = res.hitokoto;
+        if (!res.from_who && !res.from) {
+          htktSource.textContent = "佚名";
+        } else {
+          if (!res.from_who) htktSource.textContent = res.from;
+          else if (!res.from) htktSource.textContent = res.from_who;
+          else htktSource.textContent = res.from_who + " (" + res.from + ")";
+        }
+      }
+
+      htktTrigger.addEventListener("click", function () {
+        htktContent.textContent = "Loading";
+        htktSource.textContent = "Loading";
+        loadHitokoto();
       });
 
       function loadDarkModePreference() {
@@ -118,6 +154,7 @@
       }
 
       loadDarkModePreference();
+      loadHitokoto();
       randomizeWord();
     </script>
     <script src="./assets/script.js" type="text/javascript"></script>
