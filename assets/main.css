@@ -136,7 +136,8 @@ code,
 kbd,
 samp,
 pre {
-  font-family: "JetBrains Mono", Consolas, Menlo, monospace;
+  font-family: "JetBrains Mono", Consolas, Menlo, monospace, "Noto Sans CJK SC",
+    "Source Han Sans SC", sans-serif;
   /* 1 */
   font-feature-settings: normal;
   /* 2 */
@@ -612,12 +613,13 @@ video {
   align-items: center;
   --tw-bg-opacity: 1;
   background-color: rgb(226 232 240 / var(--tw-bg-opacity));
-  font-family: "JetBrains Mono", Consolas, Menlo, monospace;
+  font-family: "JetBrains Mono", Consolas, Menlo, monospace, "Noto Sans CJK SC",
+    "Source Han Sans SC", sans-serif;
   --tw-text-opacity: 1;
   color: rgb(51 65 85 / var(--tw-text-opacity));
 }
 
-#container:is(.dark *) {
+#container:where(.dark, .dark *) {
   --tw-bg-opacity: 1;
   background-color: rgb(30 41 59 / var(--tw-bg-opacity));
   --tw-text-opacity: 1;
@@ -692,13 +694,6 @@ video {
   opacity: 1;
 }
 
-.jump-button:is(.dark *) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(203 213 225 / var(--tw-bg-opacity));
-  --tw-text-opacity: 1;
-  color: rgb(30 41 59 / var(--tw-text-opacity));
-}
-
 @media (min-width: 640px) {
   .jump-button {
     margin-left: 0.5rem;
@@ -706,6 +701,13 @@ video {
     padding-left: 1rem;
     padding-right: 1rem;
   }
+}
+
+.jump-button:where(.dark, .dark *) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(203 213 225 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(30 41 59 / var(--tw-text-opacity));
 }
 
 select {
@@ -753,14 +755,14 @@ select:focus-within {
   border-color: rgb(148 163 184 / var(--tw-border-opacity));
 }
 
-select:is(.dark *) {
+select:where(.dark, .dark *) {
   --tw-border-opacity: 1;
   border-color: rgb(51 65 85 / var(--tw-border-opacity));
   --tw-bg-opacity: 1;
   background-color: rgb(15 23 42 / var(--tw-bg-opacity));
 }
 
-select:focus-within:is(.dark *) {
+select:focus-within:where(.dark, .dark *) {
   --tw-border-opacity: 1;
   border-color: rgb(100 116 139 / var(--tw-border-opacity));
 }
@@ -831,14 +833,14 @@ input:focus-within {
   border-color: rgb(148 163 184 / var(--tw-border-opacity));
 }
 
-input:is(.dark *) {
+input:where(.dark, .dark *) {
   --tw-border-opacity: 1;
   border-color: rgb(51 65 85 / var(--tw-border-opacity));
   --tw-bg-opacity: 1;
   background-color: rgb(15 23 42 / var(--tw-bg-opacity));
 }
 
-input:focus-within:is(.dark *) {
+input:focus-within:where(.dark, .dark *) {
   --tw-border-opacity: 1;
   border-color: rgb(100 116 139 / var(--tw-border-opacity));
 }
@@ -891,17 +893,17 @@ input:focus-within::placeholder {
   color: rgb(71 85 105 / var(--tw-text-opacity));
 }
 
-#subtitle:is(.dark *) {
-  --tw-text-opacity: 1;
-  color: rgb(148 163 184 / var(--tw-text-opacity));
-}
-
 @media (min-width: 640px) {
   #subtitle {
     margin-top: 1.5rem;
     font-size: 1.25rem;
     line-height: 1.75rem;
   }
+}
+
+#subtitle:where(.dark, .dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(148 163 184 / var(--tw-text-opacity));
 }
 
 #input-box-prob-id,
@@ -957,15 +959,10 @@ input:focus-within::placeholder {
   flex-direction: column;
   border-radius: 0.375rem;
   --tw-bg-opacity: 1;
-  background-color: rgb(203 213 225 / var(--tw-bg-opacity));
+  background-color: rgb(241 245 249 / var(--tw-bg-opacity));
   padding: 0.5rem;
   font-size: 0.875rem;
   line-height: 1.25rem;
-}
-
-#htkt-frame:is(.dark *) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(15 23 42 / var(--tw-bg-opacity));
 }
 
 @media (min-width: 640px) {
@@ -980,6 +977,11 @@ input:focus-within::placeholder {
   }
 }
 
+#htkt-frame:where(.dark, .dark *) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(15 23 42 / var(--tw-bg-opacity));
+}
+
 #htkt-title {
   text-align: left;
   font-size: 0.75rem;
@@ -989,16 +991,16 @@ input:focus-within::placeholder {
   color: rgb(71 85 105 / var(--tw-text-opacity));
 }
 
-#htkt-title:is(.dark *) {
-  --tw-text-opacity: 1;
-  color: rgb(148 163 184 / var(--tw-text-opacity));
-}
-
 @media (min-width: 640px) {
   #htkt-title {
     font-size: 0.875rem;
     line-height: 1.25rem;
   }
+}
+
+#htkt-title:where(.dark, .dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(148 163 184 / var(--tw-text-opacity));
 }
 
 #htkt {
@@ -1018,7 +1020,8 @@ input:focus-within::placeholder {
 }
 
 #htkt-src {
-  overflow-x: hidden;
+  max-height: 2.5rem;
+  overflow: hidden;
   text-align: right;
   font-size: 0.75rem;
   line-height: 1rem;

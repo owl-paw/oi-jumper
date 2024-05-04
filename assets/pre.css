@@ -55,7 +55,7 @@
   }
 
   #htkt-frame {
-    @apply flex flex-col text-sm sm:text-base mt-4 mb-2 sm:mt-auto sm:mb-5 p-2 sm:p-5 mx-2 rounded-md bg-slate-300 dark:bg-slate-900 min-w-72 max-w-xl sm:min-w-[35rem] sm:max-w-[35rem] flex-shrink;
+    @apply flex flex-col text-sm sm:text-base mt-4 mb-2 sm:mt-auto sm:mb-5 p-2 sm:p-5 mx-2 rounded-md bg-slate-100 dark:bg-slate-900 min-w-72 max-w-xl sm:min-w-[35rem] sm:max-w-[35rem] flex-shrink;
   }
 
   #htkt-title {
@@ -67,6 +67,6 @@
   }
 
   #htkt-src {
-    @apply text-xs sm:text-sm text-right text-slate-500 overflow-x-hidden;
+    @apply text-xs sm:text-sm text-right text-slate-500 max-h-10 overflow-hidden;
   }
 }
