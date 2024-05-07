@@ -7,7 +7,7 @@ function openLink(url) {
   var popUp = window.open(url);
   if (!popUp || popUp.closed || typeof popUp.closed == "undefined") {
     alert(
-      "Your browser blocked us from opening the targeted page. Try adding this site to your exception list in your browser's settings to ensure its functionality.",
+      "Your browser blocked us from opening the targeted page. Try adding this site to your exception list in your browser's settings to ensure its functionality."
     );
   }
 }
@@ -44,15 +44,24 @@ submitButtonProbId.addEventListener("click", function () {
       return;
     }
   } else if (judgeSelectorProbId.value === "cf") {
-    const re = /^(\d{1,4})([a-zA-Z])$/;
+    const re = /^(\d{1,4})([a-zA-Z])([1-9]?)$/;
     if (re.test(inputValue)) {
       const match = re.exec(inputValue);
-      openLink(
-        "https://codeforces.com/problemset/problem/" +
-          match[1] +
-          "/" +
-          match[2],
-      );
+      if (!match[3])
+        openLink(
+          "https://codeforces.com/problemset/problem/" +
+            match[1] +
+            "/" +
+            match[2]
+        );
+      else
+        openLink(
+          "https://codeforces.com/problemset/problem/" +
+            match[1] +
+            "/" +
+            match[2] +
+            match[3]
+        );
       return;
     }
   } else if (judgeSelectorProbId.value === "uoj") {
@@ -104,7 +113,7 @@ inputBoxProbId.addEventListener("keydown", function (event) {
 
 submitButtonProbName.addEventListener("click", function () {
   const judgeSelectorProbName = document.getElementById(
-    "judge-selector-prob-name",
+    "judge-selector-prob-name"
   );
   const inputValue = inputBoxProbName.value;
 
