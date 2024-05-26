@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>OI Jumper</title>
     <link href="./assets/main.css" rel="stylesheet" />
-    <link rel="icon" type="image/png" href="./icon.png" />
+    <link rel="icon" type="image/svg" href="./assets/icon.svg" />
   </head>
 
   <body>
@@ -89,6 +89,11 @@
             document.documentElement.classList.remove("dark");
           else document.documentElement.classList.add("dark");
         }
+
+        const favicon = document.querySelector("link[rel='icon']");
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches)
+          favicon.setAttribute("href", "./assets/icon-dark.svg");
+        else favicon.setAttribute("href", "./assets/icon.svg");
       }
 
       darkModeToggler.addEventListener("click", function () {
