@@ -113,7 +113,7 @@
         var script = document.createElement("script");
         script.setAttribute("type", "text/javascript");
         script.src =
-          "https://international.v1.hitokoto.cn/?callback=respondHitokoto";
+          "https://international.v1.hitokoto.cn/?c=i&callback=respondHitokoto";
         script.id = "jsonp";
         document.body.appendChild(script);
       }
@@ -126,7 +126,7 @@
         } else {
           if (!res.from_who) htktSource.textContent = res.from;
           else if (!res.from) htktSource.textContent = res.from_who;
-          else htktSource.textContent = res.from_who + " (" + res.from + ")";
+          else htktSource.textContent = res.from_who + "《" + res.from + "》";
         }
       }
 
