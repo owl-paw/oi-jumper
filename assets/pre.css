@@ -22,11 +22,11 @@
   }
 
   .framed-box {
-    @apply border-2 border-slate-300 bg-white outline-none transition focus-within:border-slate-400 dark:border-slate-700 dark:bg-slate-900 dark:focus-within:border-slate-500;
+    @apply rounded-md border-2 border-slate-300 bg-white outline-none transition focus-within:border-slate-400 dark:border-slate-700 dark:bg-slate-900 dark:focus-within:border-slate-500;
   }
 
   .jump-button {
-    @apply mx-1 min-w-fit flex-shrink-0 bg-slate-700 px-2 font-normal text-white opacity-50 transition hover:opacity-100 dark:bg-slate-300 dark:text-slate-800 sm:mx-2 sm:px-4;
+    @apply mx-1 min-w-fit flex-shrink-0 rounded-md border-2 border-slate-300 bg-slate-700 px-2 font-normal text-white opacity-50 transition hover:opacity-100 sm:mx-2 sm:px-4 dark:border-slate-700 dark:bg-slate-300 dark:text-slate-800;
   }
 
   select {
@@ -42,7 +42,7 @@
   }
 
   #subtitle {
-    @apply mt-5 text-center text-base text-slate-600 dark:text-slate-400 sm:mt-6 sm:text-xl;
+    @apply mt-5 text-center text-base text-slate-600 sm:mt-6 sm:text-xl dark:text-slate-400;
   }
 
   #input-box-prob-id,
@@ -51,22 +51,18 @@
   }
 
   #bottom-frame {
-    @apply mb-0 mt-2 flex h-7 w-screen justify-center text-sm text-white sm:mb-10 sm:mt-10 sm:h-10 sm:text-base;
+    @apply mb-6 flex h-7 w-screen justify-center text-sm text-white sm:mb-10 sm:mt-2 sm:h-10 sm:text-base;
   }
 
   #htkt-frame {
-    @apply flex flex-col text-sm sm:text-base mt-4 mb-2 sm:mt-auto sm:mb-5 p-2 sm:p-5 mx-2 rounded-md bg-slate-100 dark:bg-slate-900 min-w-72 max-w-xl sm:min-w-[35rem] sm:max-w-[35rem] flex-shrink;
-  }
-
-  #htkt-title {
-    @apply font-bold text-left text-xs sm:text-sm text-slate-600 dark:text-slate-400;
+    @apply mx-2 mb-4 mt-auto flex min-w-72 max-w-xl flex-shrink flex-col rounded-md bg-slate-100 p-2 text-sm sm:mb-5 sm:min-w-[35rem] sm:max-w-[35rem] sm:p-3 sm:text-base dark:bg-slate-900;
   }
 
   #htkt {
-    @apply text-center my-1 sm:my-4 overflow-y-hidden max-h-20 overflow-hidden;
+    @apply mb-1 max-h-24 overflow-hidden overflow-y-hidden text-center;
   }
 
   #htkt-src {
-    @apply text-xs sm:text-sm text-right text-slate-500 max-h-10 overflow-hidden;
+    @apply max-h-10 overflow-hidden text-center text-xs text-slate-500 sm:text-sm;
   }
 }

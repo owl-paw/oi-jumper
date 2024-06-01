@@ -32,7 +32,7 @@
           <option value="sp">SPOJ</option>
           <option value="uoj">UniversalOJ</option>
         </select>
-        <input id="input-box-prob-id" placeholder="problem id" />
+        <input id="input-box-prob-id" placeholder="题目编号" />
         <button id="submit-button-prob-id" class="jump-button">JUMP</button>
       </section>
 
@@ -48,28 +48,24 @@
           <option value="lg" selected>Luogu 洛谷</option>
           <option value="uoj">UniversalOJ</option>
         </select>
-        <input id="input-box-prob-name" placeholder="problem name" />
+        <input id="input-box-prob-name" placeholder="题目名称" />
         <button id="submit-button-prob-name" class="jump-button">FIND</button>
       </section>
 
       <section id="htkt-frame">
-        <h4 id="htkt-title">一言 / Hitokoto</h4>
-        <p id="htkt">Loading</p>
-        <span id="htkt-src">Loading</span>
+        <p id="htkt">加载中……</p>
+        <span id="htkt-src">加载中……</span>
       </section>
 
       <!-- Bottom Info -->
       <footer id="bottom-frame">
         <button id="dark-mode-toggler" class="jump-button mr-3 px-4">
-          <span class="hidden sm:inline">Toggle </span>Appearance
+          <span class="hidden sm:inline">切换为</span
+          ><span id="scheme-name">深色模式</span>
         </button>
-        <a
-          href="https://github.com/eoinli/oi-jumper"
-          target="_blank"
-          class="jump-button ml-3 px-4 leading-7 sm:leading-10"
-        >
-          <span class="hidden sm:inline">View On </span>GitHub
-        </a>
+        <button id="view-on-github" class="jump-button mr-3 px-4">
+          <span class="hidden sm:inline">跳转至 </span>GitHub
+        </button>
       </footer>
     </div>
 
@@ -77,17 +73,23 @@
       const theWord = document.getElementById("the-word");
       const htktContent = document.getElementById("htkt");
       const htktSource = document.getElementById("htkt-src");
+      const viewOnGithub = document.getElementById("view-on-github");
       const darkModeToggler = document.getElementById("dark-mode-toggler");
 
       function loadColorScheme() {
+        const schemeName = document.getElementById("scheme-name");
+
         if (!("theme" in localStorage)) {
-          if (window.matchMedia("(prefers-color-scheme: dark)").matches)
-            document.documentElement.classList.add("dark");
-          else document.documentElement.classList.remove("dark");
+          document.documentElement.classList.remove("dark");
+          schemeName.innerHTML = "深色模式";
         } else {
-          if (localStorage.theme === "light")
+          if (localStorage.theme === "light") {
             document.documentElement.classList.remove("dark");
-          else document.documentElement.classList.add("dark");
+            schemeName.innerHTML = "深色模式";
+          } else {
+            document.documentElement.classList.add("dark");
+            schemeName.innerHTML = "浅色模式";
+          }
         }
 
         const favicon = document.querySelector("link[rel='icon']");
@@ -98,15 +100,18 @@
 
       darkModeToggler.addEventListener("click", function () {
         if (!("theme" in localStorage)) {
-          if (window.matchMedia("(prefers-color-scheme: dark)").matches)
-            localStorage.setItem("theme", "light");
-          else localStorage.setItem("theme", "dark");
+          localStorage.setItem("theme", "light");
         } else {
           if (localStorage.theme === "light") localStorage.theme = "dark";
           else localStorage.theme = "light";
         }
 
         loadColorScheme();
+      });
+
+      viewOnGithub.addEventListener("click", function () {
+        window.location.href = "https://github.com/eoinli/oi-jumper";
+        return;
       });
 
       function loadHitokoto() {
