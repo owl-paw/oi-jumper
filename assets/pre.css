@@ -10,11 +10,27 @@
     src: url("./JetBrainsMono\[wght\].woff2") format("woff2-variations");
     font-feature-settings: "zero";
   }
+
+  :root {
+    --bg-color: theme("colors.slate.200");
+    --text-color: theme("colors.slate.700");
+    --focus-color: theme("colors.slate.400");
+    --depth-color: #fff;
+    --secondary-text-color: theme("colors.slate.500");
+  }
+
+  :root.dark {
+    --bg-color: theme("colors.slate.800");
+    --text-color: theme("colors.slate.300");
+    --focus-color: theme("colors.slate.600");
+    --depth-color: theme("colors.slate.900");
+    --secondary-text-color: theme("colors.slate.400");
+  }
 }
 
 @layer components {
   #container {
-    @apply flex h-screen w-screen flex-col items-center bg-slate-200 font-mono text-slate-700 dark:bg-slate-800 dark:text-slate-300;
+    @apply flex h-screen w-screen flex-col items-center bg-[var(--bg-color)] font-mono text-[var(--text-color)];
   }
 
   .input-suite {
@@ -22,11 +38,11 @@
   }
 
   .framed-box {
-    @apply rounded-md border-2 border-slate-300 bg-white outline-none transition focus-within:border-slate-400 dark:border-slate-700 dark:bg-slate-900 dark:focus-within:border-slate-500;
+    @apply rounded-md border-2 border-transparent bg-[var(--depth-color)] outline-none transition focus:border-[var(--focus-color)];
   }
 
   .jump-button {
-    @apply mx-1 min-w-fit flex-shrink-0 rounded-md border-2 border-slate-300 bg-slate-700 px-2 font-normal text-white opacity-50 transition hover:opacity-100 sm:mx-2 sm:px-4 dark:border-slate-700 dark:bg-slate-300 dark:text-slate-800;
+    @apply mx-1 min-w-fit flex-shrink-0 rounded-md bg-[var(--text-color)] px-2 font-normal text-[var(--bg-color)] opacity-70 transition hover:opacity-100 sm:mx-2 sm:px-4;
   }
 
   select {
@@ -34,7 +50,7 @@
   }
 
   input {
-    @apply framed-box mx-1.5 min-w-32 max-w-80 flex-shrink basis-80 text-center focus-within:placeholder:text-transparent sm:mx-2;
+    @apply framed-box mx-1.5 min-w-32 max-w-80 flex-shrink basis-80 text-center focus:placeholder:text-transparent sm:mx-2;
   }
 
   #title {
@@ -42,7 +58,7 @@
   }
 
   #subtitle {
-    @apply mt-5 text-center text-base text-slate-600 sm:mt-6 sm:text-xl dark:text-slate-400;
+    @apply mt-5 text-center text-base text-[var(--secondary-text-color)] sm:mt-6 sm:text-xl;
   }
 
   #input-box-prob-id,
@@ -51,11 +67,11 @@
   }
 
   #bottom-frame {
-    @apply mb-6 flex h-7 w-screen justify-center text-sm text-white sm:mb-10 sm:mt-2 sm:h-10 sm:text-base;
+    @apply mb-6 flex h-7 w-screen justify-center text-sm sm:mb-10 sm:mt-2 sm:h-10 sm:text-base;
   }
 
   #htkt-frame {
-    @apply mx-2 mb-4 mt-auto flex min-w-72 max-w-xl flex-shrink flex-col rounded-md bg-slate-100 p-2 text-sm sm:mb-5 sm:min-w-[35rem] sm:max-w-[35rem] sm:p-3 sm:text-base dark:bg-slate-900;
+    @apply mx-2 mb-4 mt-auto flex min-w-72 max-w-xl flex-shrink flex-col rounded-md bg-[var(--depth-color)] p-2 text-sm sm:mb-5 sm:min-w-[35rem] sm:max-w-[35rem] sm:p-3 sm:text-base;
   }
 
   #htkt {
@@ -63,6 +79,6 @@
   }
 
   #htkt-src {
-    @apply max-h-10 overflow-hidden text-center text-xs text-slate-500 sm:text-sm;
+    @apply max-h-10 text-center text-xs text-[var(--secondary-text-color)] sm:text-sm;
   }
 }

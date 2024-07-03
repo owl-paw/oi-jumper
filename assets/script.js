@@ -7,7 +7,7 @@ function openLink(url) {
   var popUp = window.open(url);
   if (!popUp || popUp.closed || typeof popUp.closed == "undefined") {
     alert(
-      "Your browser blocked us from opening the targeted page. Try adding this site to your exception list in your browser's settings to ensure its functionality.",
+      "目标网页被浏览器拦截，请将本网站加入浏览器的「拦截弹出式窗口」白名单中。",
     );
   }
 }
@@ -17,7 +17,7 @@ submitButtonProbId.addEventListener("click", function () {
   const inputValue = inputBoxProbId.value;
 
   if (!inputValue) {
-    alert("Please enter a valid problem ID.");
+    alert("请输入一个有效的题目编号。");
     return;
   }
 
@@ -102,7 +102,7 @@ submitButtonProbId.addEventListener("click", function () {
     return;
   }
 
-  alert("Please enter a valid problem ID.");
+  alert("请输入一个有效的题目编号。");
 });
 
 inputBoxProbId.addEventListener("keydown", function (event) {
@@ -118,7 +118,7 @@ submitButtonProbName.addEventListener("click", function () {
   const inputValue = inputBoxProbName.value;
 
   if (!inputValue) {
-    alert("Please enter something as the search term.");
+    alert("请输入搜索关键词。");
     return;
   }
 
