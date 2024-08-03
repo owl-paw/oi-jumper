@@ -66,12 +66,8 @@
     @apply mx-1 px-2 sm:mx-2 sm:px-4;
   }
 
-  #bottom-frame {
-    @apply mb-6 flex h-7 w-screen justify-center text-sm sm:mb-10 sm:mt-2 sm:h-10 sm:text-base;
-  }
-
   #htkt-frame {
-    @apply mx-2 mb-4 mt-auto flex min-w-72 max-w-xl flex-shrink flex-col rounded-md bg-[var(--depth-color)] p-2 text-sm sm:mb-5 sm:min-w-[35rem] sm:max-w-[35rem] sm:p-3 sm:text-base;
+    @apply mx-2 mt-auto mb-8 flex min-w-72 max-w-xl flex-shrink flex-col rounded-md bg-[var(--depth-color)] p-2 text-sm sm:mb-12 sm:min-w-[35rem] sm:max-w-[35rem] sm:p-3 sm:text-base;
   }
 
   #htkt {

@@ -1,5 +1,5 @@
 /*
-! tailwindcss v3.4.4 | MIT License | https://tailwindcss.com
+! tailwindcss v3.4.6 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -22,7 +22,7 @@
 
 ::before,
 ::after {
-  --tw-content: "";
+  --tw-content: '';
 }
 
 /*
@@ -44,10 +44,9 @@ html,
   -moz-tab-size: 4;
   /* 3 */
   -o-tab-size: 4;
-  tab-size: 4;
+     tab-size: 4;
   /* 3 */
-  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   /* 4 */
   font-feature-settings: normal;
   /* 5 */
@@ -90,7 +89,7 @@ Add the correct text decoration in Chrome, Edge, and Safari.
 
 abbr:where([title]) {
   -webkit-text-decoration: underline dotted;
-  text-decoration: underline dotted;
+          text-decoration: underline dotted;
 }
 
 /*
@@ -136,8 +135,7 @@ code,
 kbd,
 samp,
 pre {
-  font-family: "JetBrains Mono", Consolas, Menlo, monospace, "Sarasa UI SC",
-    "Noto Sans CJK SC", "Source Han Sans SC", sans-serif;
+  font-family: "JetBrains Mono", Consolas, Menlo, monospace, "Sarasa UI SC", "Noto Sans CJK SC", "Source Han Sans SC", sans-serif;
   /* 1 */
   font-feature-settings: normal;
   /* 2 */
@@ -238,9 +236,9 @@ select {
 */
 
 button,
-input:where([type="button"]),
-input:where([type="reset"]),
-input:where([type="submit"]) {
+input:where([type='button']),
+input:where([type='reset']),
+input:where([type='submit']) {
   -webkit-appearance: button;
   /* 1 */
   background-color: transparent;
@@ -287,7 +285,7 @@ Correct the cursor style of increment and decrement buttons in Safari.
 2. Correct the outline style in Safari.
 */
 
-[type="search"] {
+[type='search'] {
   -webkit-appearance: textfield;
   /* 1 */
   outline-offset: -2px;
@@ -380,8 +378,7 @@ textarea {
 2. Set the default placeholder color to the user's configured gray 400 color.
 */
 
-input::-moz-placeholder,
-textarea::-moz-placeholder {
+input::-moz-placeholder, textarea::-moz-placeholder {
   opacity: 1;
   /* 1 */
   color: #9ca3af;
@@ -477,9 +474,7 @@ video {
   --secondary-text-color: #94a3b8;
 }
 
-*,
-::before,
-::after {
+*, ::before, ::after {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
   --tw-translate-x: 0;
@@ -628,8 +623,7 @@ video {
   flex-direction: column;
   align-items: center;
   background-color: var(--bg-color);
-  font-family: "JetBrains Mono", Consolas, Menlo, monospace, "Sarasa UI SC",
-    "Noto Sans CJK SC", "Source Han Sans SC", sans-serif;
+  font-family: "JetBrains Mono", Consolas, Menlo, monospace, "Sarasa UI SC", "Noto Sans CJK SC", "Source Han Sans SC", sans-serif;
   color: var(--text-color);
 }
 
@@ -664,34 +658,9 @@ video {
   font-weight: 400;
   color: var(--bg-color);
   opacity: 0.7;
-  transition-property:
-    color,
-    background-color,
-    border-color,
-    text-decoration-color,
-    fill,
-    stroke,
-    opacity,
-    box-shadow,
-    transform,
-    filter,
-    -webkit-backdrop-filter;
-  transition-property: color, background-color, border-color,
-    text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter,
-    backdrop-filter;
-  transition-property:
-    color,
-    background-color,
-    border-color,
-    text-decoration-color,
-    fill,
-    stroke,
-    opacity,
-    box-shadow,
-    transform,
-    filter,
-    backdrop-filter,
-    -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
@@ -716,34 +685,9 @@ select {
   background-color: var(--depth-color);
   outline: 2px solid transparent;
   outline-offset: 2px;
-  transition-property:
-    color,
-    background-color,
-    border-color,
-    text-decoration-color,
-    fill,
-    stroke,
-    opacity,
-    box-shadow,
-    transform,
-    filter,
-    -webkit-backdrop-filter;
-  transition-property: color, background-color, border-color,
-    text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter,
-    backdrop-filter;
-  transition-property:
-    color,
-    background-color,
-    border-color,
-    text-decoration-color,
-    fill,
-    stroke,
-    opacity,
-    box-shadow,
-    transform,
-    filter,
-    backdrop-filter,
-    -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
@@ -780,34 +724,9 @@ input {
   background-color: var(--depth-color);
   outline: 2px solid transparent;
   outline-offset: 2px;
-  transition-property:
-    color,
-    background-color,
-    border-color,
-    text-decoration-color,
-    fill,
-    stroke,
-    opacity,
-    box-shadow,
-    transform,
-    filter,
-    -webkit-backdrop-filter;
-  transition-property: color, background-color, border-color,
-    text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter,
-    backdrop-filter;
-  transition-property:
-    color,
-    background-color,
-    border-color,
-    text-decoration-color,
-    fill,
-    stroke,
-    opacity,
-    box-shadow,
-    transform,
-    filter,
-    backdrop-filter,
-    -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
@@ -872,7 +791,7 @@ input:focus::placeholder {
 }
 
 #input-box-prob-id,
-#input-box-prob-name {
+  #input-box-prob-name {
   margin-left: 0.25rem;
   margin-right: 0.25rem;
   padding-left: 0.5rem;
@@ -889,31 +808,11 @@ input:focus::placeholder {
   }
 }
 
-#bottom-frame {
-  margin-bottom: 1.5rem;
-  display: flex;
-  height: 1.75rem;
-  width: 100vw;
-  justify-content: center;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-}
-
-@media (min-width: 640px) {
-  #bottom-frame {
-    margin-bottom: 2.5rem;
-    margin-top: 0.5rem;
-    height: 2.5rem;
-    font-size: 1rem;
-    line-height: 1.5rem;
-  }
-}
-
 #htkt-frame {
   margin-left: 0.5rem;
   margin-right: 0.5rem;
-  margin-bottom: 1rem;
   margin-top: auto;
+  margin-bottom: 2rem;
   display: flex;
   min-width: 18rem;
   max-width: 36rem;
@@ -928,7 +827,7 @@ input:focus::placeholder {
 
 @media (min-width: 640px) {
   #htkt-frame {
-    margin-bottom: 1.25rem;
+    margin-bottom: 3rem;
     min-width: 35rem;
     max-width: 35rem;
     padding: 0.75rem;
@@ -960,25 +859,12 @@ input:focus::placeholder {
   }
 }
 
-.mr-3 {
-  margin-right: 0.75rem;
-}
-
 .mt-2 {
   margin-top: 0.5rem;
 }
 
 .mt-6 {
   margin-top: 1.5rem;
-}
-
-.hidden {
-  display: none;
-}
-
-.px-4 {
-  padding-left: 1rem;
-  padding-right: 1rem;
 }
 
 @media (min-width: 640px) {
@@ -988,10 +874,6 @@ input:focus::placeholder {
 
   .sm\:mt-4 {
     margin-top: 1rem;
-  }
-
-  .sm\:inline {
-    display: inline;
   }
 
   .sm\:hidden {
