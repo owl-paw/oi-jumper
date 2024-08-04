@@ -459,19 +459,19 @@ video {
 }
 
 :root {
-  --bg-color: #e2e8f0;
-  --text-color: #334155;
-  --focus-color: #94a3b8;
+  --bg-color: #eceff4;
+  --text-color: #434c5e;
+  --focus-color: #434c5e80;
   --depth-color: #fff;
-  --secondary-text-color: #64748b;
+  --secondary-text-color: #434c5e80;
 }
 
 :root.dark {
-  --bg-color: #1e293b;
-  --text-color: #cbd5e1;
-  --focus-color: #475569;
-  --depth-color: #0f172a;
-  --secondary-text-color: #94a3b8;
+  --bg-color: #2e3440;
+  --text-color: #e5e9f0;
+  --focus-color: #d8dee980;
+  --depth-color: #3b4252;
+  --secondary-text-color: #d8dee980;
 }
 
 *, ::before, ::after {

@@ -12,19 +12,17 @@
   }
 
   :root {
-    --bg-color: theme("colors.slate.200");
-    --text-color: theme("colors.slate.700");
-    --focus-color: theme("colors.slate.400");
+    --bg-color: #eceff4;
+    --text-color: #434c5e;
+    --focus-color: #434c5e80;
     --depth-color: #fff;
-    --secondary-text-color: theme("colors.slate.500");
   }
 
   :root.dark {
-    --bg-color: theme("colors.slate.800");
-    --text-color: theme("colors.slate.300");
-    --focus-color: theme("colors.slate.600");
-    --depth-color: theme("colors.slate.900");
-    --secondary-text-color: theme("colors.slate.400");
+    --bg-color: #2e3440;
+    --text-color: #e5e9f0;
+    --focus-color: #d8dee980;
+    --depth-color: #3b4252;
   }
 }
 
@@ -58,7 +56,7 @@
   }
 
   #subtitle {
-    @apply mt-5 text-center text-base text-[var(--secondary-text-color)] sm:mt-6 sm:text-xl;
+    @apply mt-5 text-center text-base text-[var(--focus-color)] sm:mt-6 sm:text-xl;
   }
 
   #input-box-prob-id,
@@ -75,6 +73,6 @@
   }
 
   #htkt-src {
-    @apply max-h-10 text-center text-xs text-[var(--secondary-text-color)] sm:text-sm;
+    @apply max-h-10 text-center text-xs text-[var(--focus-color)] sm:text-sm;
   }
 }
