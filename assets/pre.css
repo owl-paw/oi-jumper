@@ -10,69 +10,18 @@
     src: url("./JetBrainsMono\[wght\].woff2") format("woff2-variations");
     font-feature-settings: "zero";
   }
-
-  :root {
-    --bg-color: #eceff4;
-    --text-color: #434c5e;
-    --focus-color: #434c5e80;
-    --depth-color: #fff;
-  }
-
-  :root.dark {
-    --bg-color: #2e3440;
-    --text-color: #e5e9f0;
-    --focus-color: #d8dee980;
-    --depth-color: #3b4252;
-  }
 }
 
 @layer components {
-  #container {
-    @apply flex h-screen w-screen flex-col items-center bg-[var(--bg-color)] font-mono text-[var(--text-color)];
-  }
-
   .input-suite {
-    @apply flex h-8 w-screen min-w-0 justify-center text-sm sm:h-10 sm:text-base;
+    @apply flex w-screen min-w-0 justify-center text-sm sm:text-base;
   }
 
-  .framed-box {
-    @apply rounded-md border-2 border-transparent bg-[var(--depth-color)] outline-none transition focus:border-[var(--focus-color)];
+  #judge-selector-prob-id, #judge-selector-prob-name {
+    @apply mx-1 min-w-24 basis-24 sm:mx-2 sm:min-w-32 sm:basis-40;
   }
 
-  .jump-button {
-    @apply mx-1 min-w-fit flex-shrink-0 rounded-md bg-[var(--text-color)] px-2 font-normal text-[var(--bg-color)] opacity-70 transition hover:opacity-100 sm:mx-2 sm:px-4;
-  }
-
-  select {
-    @apply framed-box mx-1 min-w-24 flex-shrink-0 basis-24 px-1 sm:mx-2 sm:min-w-32 sm:basis-40 sm:px-2;
-  }
-
-  input {
-    @apply framed-box mx-1.5 min-w-32 max-w-80 flex-shrink basis-80 text-center focus:placeholder:text-transparent sm:mx-2;
-  }
-
-  #title {
-    @apply mt-12 text-5xl font-bold sm:mt-20 sm:text-[5rem];
-  }
-
-  #subtitle {
-    @apply mt-5 text-center text-base text-[var(--focus-color)] sm:mt-6 sm:text-xl;
-  }
-
-  #input-box-prob-id,
-  #input-box-prob-name {
-    @apply mx-1 px-2 sm:mx-2 sm:px-4;
-  }
-
-  #htkt-frame {
-    @apply mx-2 mt-auto mb-8 flex min-w-72 max-w-xl flex-shrink flex-col rounded-md bg-[var(--depth-color)] p-2 text-sm sm:mb-12 sm:min-w-[35rem] sm:max-w-[35rem] sm:p-3 sm:text-base;
-  }
-
-  #htkt {
-    @apply mb-1 max-h-24 overflow-hidden overflow-y-hidden text-center;
-  }
-
-  #htkt-src {
-    @apply max-h-10 text-center text-xs text-[var(--focus-color)] sm:text-sm;
+  #input-box-prob-id, #input-box-prob-name {
+    @apply mx-1.5 min-w-32 max-w-80 basis-72 sm:mx-2 sm:basis-80;
   }
 }

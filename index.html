@@ -8,132 +8,150 @@
     <link rel="icon" type="image/svg" href="./assets/icon.svg" />
   </head>
 
-  <body>
-    <div id="container">
-      <!-- Page Title -->
-      <header>
-        <div id="title"><a href="#">OI Jumper</a></div>
-        <div id="subtitle">
-          made with <span id="the-word"></span> <br class="sm:hidden" />
-          by <a href="https://github.com/owl-paw" target="_blank">owlpaw</a>
-        </div>
-      </header>
+  <body
+    class="bg-base-100 flex h-screen w-screen flex-col items-center font-mono"
+  >
+    <dialog id="page-blocked-alert" class="modal">
+      <div class="modal-box">
+        <h3 class="text-lg font-bold">页面被阻止！</h3>
+        <p class="py-4">
+          目标网页被浏览器拦截，请将本网站加入浏览器的「拦截弹出式窗口」白名单中。
+        </p>
+      </div>
+      <form method="dialog" class="modal-backdrop">
+        <button>close</button>
+      </form>
+    </dialog>
 
-      <!-- Problem Jumper  -->
-      <section class="input-suite mt-6 sm:mt-10">
-        <select id="judge-selector-prob-id">
-          <option value="bz">BZOJ</option>
-          <option value="cf">Codeforces</option>
-          <option value="dm">DMOJ</option>
-          <option value="hdu">HDU 杭电</option>
-          <option value="lib">LibreOJ</option>
-          <option value="lg" selected>Luogu 洛谷</option>
-          <option value="pku">POJ 北大</option>
-          <option value="sp">SPOJ</option>
-          <option value="uoj">UniversalOJ</option>
-        </select>
-        <input id="input-box-prob-id" placeholder="题目编号" />
-        <button id="submit-button-prob-id" class="jump-button">JUMP</button>
-      </section>
+    <dialog id="invalid-id" class="modal">
+      <div class="modal-box">
+        <h3 class="text-lg font-bold">题目不存在</h3>
+        <p class="pt-2">请输入一个有效的题目编号。</p>
+      </div>
+      <form method="dialog" class="modal-backdrop">
+        <button>close</button>
+      </form>
+    </dialog>
 
-      <!-- Problem Name Search -->
-      <section class="input-suite mt-2 sm:mt-4">
-        <select id="judge-selector-prob-name">
-          <option value="acw">AcWing</option>
-          <option value="at">AtCoder</option>
-          <option value="bz">BZOJ</option>
-          <option value="cf">Codeforces</option>
-          <option value="dm">DMOJ</option>
-          <option value="lib">LibreOJ</option>
-          <option value="lg" selected>Luogu 洛谷</option>
-          <option value="uoj">UniversalOJ</option>
-        </select>
-        <input id="input-box-prob-name" placeholder="题目名称" />
-        <button id="submit-button-prob-name" class="jump-button">FIND</button>
-      </section>
+    <dialog id="invalid-term" class="modal">
+      <div class="modal-box">
+        <h3 class="text-lg font-bold">搜索内容为空</h3>
+        <p class="pt-2">请输入至少一个字符长的搜索内容。</p>
+      </div>
+      <form method="dialog" class="modal-backdrop">
+        <button>close</button>
+      </form>
+    </dialog>
 
-      <section id="htkt-frame">
-        <p id="htkt">加载中……</p>
-        <span id="htkt-src">加载中……</span>
-      </section>
-    </div>
+    <!-- Page Title -->
+    <header class="hero-content mt-12 flex-col sm:mt-16">
+      <h1 class="text-primary text-5xl font-bold sm:text-[5rem]">
+        <a href="#">OI Jumper</a>
+      </h1>
+      <p class="text-base-content text-center text-base sm:mt-2 sm:text-xl">
+        made with <span id="the-word" class="text-primary"></span>
+        <br class="sm:hidden" />
+        by <a href="https://github.com/owl-paw" target="_blank">owlpaw</a>
+      </p>
+    </header>
 
-    <script type="text/javascript">
-      const theWord = document.getElementById("the-word");
-      const htktContent = document.getElementById("htkt");
-      const htktSource = document.getElementById("htkt-src");
+    <!-- Problem Jumper  -->
+    <section class="input-suite mt-6 sm:mt-10">
+      <select
+        id="judge-selector-prob-id"
+        class="select select-bordered select-sm sm:select-md"
+      >
+        <option value="bz">BZOJ</option>
+        <option value="cf">Codeforces</option>
+        <option value="dm">DMOJ</option>
+        <option value="hdu">HDU 杭电</option>
+        <option value="lib">LibreOJ</option>
+        <option value="lg" selected>Luogu 洛谷</option>
+        <option value="pku">POJ 北大</option>
+        <option value="sp">SPOJ</option>
+        <option value="uoj">UniversalOJ</option>
+      </select>
+      <input
+        id="input-box-prob-id"
+        class="input input-bordered input-sm sm:input-md"
+        placeholder="题目编号"
+      />
+      <button
+        id="submit-button-prob-id"
+        class="btn btn-primary btn-sm sm:btn-md mx-1 sm:mx-2"
+      >
+        JUMP
+      </button>
+    </section>
 
-      function loadColorScheme() {
-        const favicon = document.querySelector("link[rel='icon']");
-        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-          favicon.setAttribute("href", "./assets/icon-dark.svg");
-          document.documentElement.classList.add("dark");
-        } else {
-          favicon.setAttribute("href", "./assets/icon.svg");
-          document.documentElement.classList.remove("dark");
-        }
-      }
+    <!-- Problem Name Search -->
+    <section class="input-suite mt-2 sm:mt-4">
+      <select
+        id="judge-selector-prob-name"
+        class="select select-bordered select-sm sm:select-md"
+      >
+        <option value="acw">AcWing</option>
+        <option value="at">AtCoder</option>
+        <option value="bz">BZOJ</option>
+        <option value="cf">Codeforces</option>
+        <option value="dm">DMOJ</option>
+        <option value="lib">LibreOJ</option>
+        <option value="lg" selected>Luogu 洛谷</option>
+        <option value="uoj">UniversalOJ</option>
+      </select>
+      <input
+        id="input-box-prob-name"
+        class="input input-bordered input-sm sm:input-md"
+        placeholder="题目名称"
+      />
+      <button
+        id="submit-button-prob-name"
+        class="btn btn-primary btn-sm sm:btn-md mx-1 sm:mx-2"
+      >
+        FIND
+      </button>
+    </section>
 
-      loadColorScheme();
+    <footer class="mb-8 mt-auto">
+      <div class="join">
+        <input
+          type="radio"
+          name="theme-buttons"
+          class="btn theme-controller join-item"
+          aria-label="Auto"
+          value="default"
+        />
+        <input
+          type="radio"
+          name="theme-buttons"
+          class="btn theme-controller join-item"
+          aria-label="Light"
+          value="light"
+        />
+        <input
+          type="radio"
+          name="theme-buttons"
+          class="btn theme-controller join-item"
+          aria-label="Dark"
+          value="dark"
+        />
+        <input
+          type="radio"
+          name="theme-buttons"
+          class="btn theme-controller join-item"
+          aria-label="Autumn"
+          value="autumn"
+        />
+        <input
+          type="radio"
+          name="theme-buttons"
+          class="btn theme-controller join-item"
+          aria-label="Night"
+          value="night"
+        />
+      </div>
+    </footer>
 
-      function loadHitokoto() {
-        var script = document.createElement("script");
-        script.setAttribute("type", "text/javascript");
-        script.src =
-          "https://international.v1.hitokoto.cn/?c=i&callback=respondHitokoto";
-        script.id = "jsonp";
-        document.body.appendChild(script);
-      }
-
-      function respondHitokoto(data) {
-        const res = JSON.parse(data);
-        htktContent.textContent = res.hitokoto;
-        if (!res.from_who && !res.from) {
-          htktSource.textContent = "佚名";
-        } else {
-          if (!res.from_who) htktSource.textContent = res.from;
-          else if (!res.from) htktSource.textContent = res.from_who;
-          else htktSource.textContent = res.from_who + "《" + res.from + "》";
-        }
-      }
-
-      function randomizeWord() {
-        const words = [
-          "???",
-          "morality",
-          "faith",
-          "time",
-          "atoms",
-          "science",
-          "regret",
-          "respect",
-          "sacrilege",
-          "javascript",
-          "code",
-          "love",
-          "madness",
-          "rage",
-          "intelligence",
-          "devotion",
-          "dedication",
-          "randomness",
-          "stupidity",
-          "bugs",
-          "coffee",
-          "magic",
-          "dreams",
-          "hatred",
-          "humor",
-          "[REDACTED]",
-        ];
-        const randomWord = words[Math.floor(Math.random() * words.length)];
-        theWord.textContent = randomWord;
-      }
-
-      loadColorScheme();
-      loadHitokoto();
-      randomizeWord();
-    </script>
     <script src="./assets/script.js" type="text/javascript"></script>
   </body>
 </html>

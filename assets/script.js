@@ -1,3 +1,87 @@
+const theWord = document.getElementById("the-word");
+
+function randomizeWord() {
+  const words = [
+    "???",
+    "morality",
+    "faith",
+    "time",
+    "atoms",
+    "science",
+    "regret",
+    "respect",
+    "sacrilege",
+    "javascript",
+    "code",
+    "love",
+    "madness",
+    "rage",
+    "intelligence",
+    "devotion",
+    "dedication",
+    "randomness",
+    "stupidity",
+    "bugs",
+    "coffee",
+    "magic",
+    "dreams",
+    "hatred",
+    "humor",
+    "[REDACTED]",
+  ];
+  const randomWord = words[Math.floor(Math.random() * words.length)];
+  theWord.textContent = randomWord;
+}
+
+randomizeWord();
+
+document.addEventListener("DOMContentLoaded", function () {
+  const themeButtons = document.querySelectorAll(".theme-controller");
+
+  function saveTheme(theme) {
+    localStorage.setItem("theme", theme);
+  }
+
+  function loadIconColor() {
+    const favicon = document.querySelector("link[rel='icon']");
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      favicon.setAttribute("href", "./assets/icon-dark.svg");
+    } else {
+      favicon.setAttribute("href", "./assets/icon.svg");
+    }
+  }
+
+  function handleSystemThemeChange(e) {
+    const currentTheme = localStorage.getItem("theme") || "default";
+    if (currentTheme === "default") {
+      loadIconColor();
+    }
+  }
+
+  const savedTheme = localStorage.getItem("theme") || "default";
+
+  themeButtons.forEach((button) => {
+    if (button.value === savedTheme) {
+      button.checked = true;
+    }
+
+    button.addEventListener("change", function () {
+      const selectedTheme = this.value;
+      applyTheme(selectedTheme);
+      saveTheme(selectedTheme);
+    });
+  });
+
+  loadIconColor();
+
+  window
+    .matchMedia("(prefers-color-scheme: dark)")
+    .addEventListener("change", handleSystemThemeChange);
+  window
+    .matchMedia("(prefers-color-scheme: light)")
+    .addEventListener("change", handleSystemThemeChange);
+});
+
 const inputBoxProbId = document.getElementById("input-box-prob-id");
 const inputBoxProbName = document.getElementById("input-box-prob-name");
 const submitButtonProbId = document.getElementById("submit-button-prob-id");
@@ -6,9 +90,8 @@ const submitButtonProbName = document.getElementById("submit-button-prob-name");
 function openLink(url) {
   var popUp = window.open(url);
   if (!popUp || popUp.closed || typeof popUp.closed == "undefined") {
-    alert(
-      "目标网页被浏览器拦截，请将本网站加入浏览器的「拦截弹出式窗口」白名单中。",
-    );
+    const alert = document.getElementById("page-blocked-alert");
+    alert.showModal();
   }
 }
 
@@ -17,7 +100,8 @@ submitButtonProbId.addEventListener("click", function () {
   const inputValue = inputBoxProbId.value;
 
   if (!inputValue) {
-    alert("请输入一个有效的题目编号。");
+    const alert = document.getElementById("invalid-id");
+    alert.showModal();
     return;
   }
 
@@ -102,7 +186,8 @@ submitButtonProbId.addEventListener("click", function () {
     return;
   }
 
-  alert("请输入一个有效的题目编号。");
+  const alert = document.getElementById("invalid-id");
+  alert.showModal();
 });
 
 inputBoxProbId.addEventListener("keydown", function (event) {
@@ -118,7 +203,8 @@ submitButtonProbName.addEventListener("click", function () {
   const inputValue = inputBoxProbName.value;
 
   if (!inputValue) {
-    alert("请输入搜索关键词。");
+    const alert = document.getElementById("invalid-term");
+    alert.showModal();
     return;
   }
 
