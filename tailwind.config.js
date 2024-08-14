@@ -12,5 +12,5 @@ export const theme = {
 export const plugins = [require("daisyui")];
 
 export const daisyui = {
-  themes: ["light", "dark", "autumn", "night"],
+  themes: ["light", "dark"],
 };

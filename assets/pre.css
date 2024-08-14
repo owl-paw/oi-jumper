@@ -14,7 +14,7 @@
 
 @layer components {
   .input-suite {
-    @apply flex w-screen min-w-0 justify-center text-sm sm:text-base;
+    @apply flex w-screen min-w-0 justify-center;
   }
 
   #judge-selector-prob-id, #judge-selector-prob-name {

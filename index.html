@@ -9,51 +9,35 @@
   </head>
 
   <body
-    class="bg-base-100 flex h-screen w-screen flex-col items-center font-mono"
+    class="flex h-screen w-screen flex-col items-center bg-base-100 font-mono"
   >
     <dialog id="page-blocked-alert" class="modal">
       <div class="modal-box">
-        <h3 class="text-lg font-bold">页面被阻止！</h3>
-        <p class="py-4">
+        <form method="dialog">
+          <button
+            class="btn btn-circle btn-ghost btn-sm absolute right-2 top-2"
+          >
+            ✕
+          </button>
+        </form>
+        <h3 class="text-lg font-bold text-error">错误：弹出页面被阻止</h3>
+        <p class="pt-2">
           目标网页被浏览器拦截，请将本网站加入浏览器的「拦截弹出式窗口」白名单中。
         </p>
       </div>
-      <form method="dialog" class="modal-backdrop">
-        <button>close</button>
-      </form>
-    </dialog>
-
-    <dialog id="invalid-id" class="modal">
-      <div class="modal-box">
-        <h3 class="text-lg font-bold">题目不存在</h3>
-        <p class="pt-2">请输入一个有效的题目编号。</p>
-      </div>
-      <form method="dialog" class="modal-backdrop">
-        <button>close</button>
-      </form>
-    </dialog>
-
-    <dialog id="invalid-term" class="modal">
-      <div class="modal-box">
-        <h3 class="text-lg font-bold">搜索内容为空</h3>
-        <p class="pt-2">请输入至少一个字符长的搜索内容。</p>
-      </div>
-      <form method="dialog" class="modal-backdrop">
-        <button>close</button>
-      </form>
     </dialog>
 
     <!-- Page Title -->
     <header class="hero-content mt-12 flex-col sm:mt-16">
-      <h1 class="text-primary text-5xl font-bold sm:text-[5rem]">
+      <h1 class="text-5xl font-bold text-primary sm:text-[5rem]">
         <a href="#">OI Jumper</a>
       </h1>
-      <p class="text-base-content text-center text-base sm:mt-2 sm:text-xl">
+      <p class="text-center text-base text-base-content sm:mt-2 sm:text-xl">
         made with <span id="the-word" class="text-primary"></span>
         <br class="sm:hidden" />
         by
         <a
-          class="hover:text-primary transition-all"
+          class="transition-all hover:text-accent"
           href="https://github.com/owl-paw"
           target="_blank"
           >owlpaw</a
@@ -63,6 +47,19 @@
 
     <!-- Problem Jumper  -->
     <section class="input-suite mt-6 sm:mt-10">
+      <dialog id="invalid-id" class="modal">
+        <div class="modal-box">
+          <form method="dialog">
+            <button
+              class="btn btn-circle btn-ghost btn-sm absolute right-2 top-2"
+            >
+              ✕
+            </button>
+          </form>
+          <h3 class="text-lg font-bold text-error">错误：题目不存在</h3>
+          <p class="pt-2">请输入一个有效的题目编号。</p>
+        </div>
+      </dialog>
       <select
         id="judge-selector-prob-id"
         class="select select-bordered select-sm sm:select-md"
@@ -79,12 +76,12 @@
       </select>
       <input
         id="input-box-prob-id"
-        class="input input-bordered input-sm sm:input-md"
+        class="input input-sm input-bordered sm:input-md"
         placeholder="题目编号"
       />
       <button
         id="submit-button-prob-id"
-        class="btn btn-primary btn-sm sm:btn-md mx-1 sm:mx-2"
+        class="btn btn-primary btn-sm mx-1 sm:btn-md sm:mx-2"
       >
         JUMP
       </button>
@@ -92,6 +89,19 @@
 
     <!-- Problem Name Search -->
     <section class="input-suite mt-2 sm:mt-4">
+      <dialog id="invalid-term" class="modal">
+        <div class="modal-box">
+          <form method="dialog">
+            <button
+              class="btn btn-circle btn-ghost btn-sm absolute right-2 top-2"
+            >
+              ✕
+            </button>
+          </form>
+          <h3 class="text-lg font-bold text-error">错误：搜索内容为空</h3>
+          <p class="pt-2">请输入至少一个字符长的搜索内容。</p>
+        </div>
+      </dialog>
       <select
         id="judge-selector-prob-name"
         class="select select-bordered select-sm sm:select-md"
@@ -107,12 +117,12 @@
       </select>
       <input
         id="input-box-prob-name"
-        class="input input-bordered input-sm sm:input-md"
+        class="input input-sm input-bordered sm:input-md"
         placeholder="题目名称"
       />
       <button
         id="submit-button-prob-name"
-        class="btn btn-primary btn-sm sm:btn-md mx-1 sm:mx-2"
+        class="btn btn-primary btn-sm mx-1 sm:btn-md sm:mx-2"
       >
         FIND
       </button>
@@ -123,37 +133,23 @@
         <input
           type="radio"
           name="theme-buttons"
-          class="btn theme-controller join-item"
-          aria-label="Auto"
+          class="theme-controller btn join-item"
+          aria-label="System"
           value="default"
         />
         <input
           type="radio"
           name="theme-buttons"
-          class="btn theme-controller join-item"
+          class="theme-controller btn join-item"
           aria-label="Light"
           value="light"
         />
         <input
           type="radio"
           name="theme-buttons"
-          class="btn theme-controller join-item"
+          class="theme-controller btn join-item"
           aria-label="Dark"
           value="dark"
-        />
-        <input
-          type="radio"
-          name="theme-buttons"
-          class="btn theme-controller join-item"
-          aria-label="Autumn"
-          value="autumn"
-        />
-        <input
-          type="radio"
-          name="theme-buttons"
-          class="btn theme-controller join-item"
-          aria-label="Night"
-          value="night"
         />
       </div>
     </footer>
