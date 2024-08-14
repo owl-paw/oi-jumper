@@ -38,6 +38,14 @@ randomizeWord();
 document.addEventListener("DOMContentLoaded", function () {
   const themeButtons = document.querySelectorAll(".theme-controller");
 
+  function applyTheme(theme) {
+    if (theme === "light")
+      document.documentElement.setAttribute("data-theme", "light");
+    else if (theme === "dark")
+      document.documentElement.setAttribute("data-theme", "dark");
+    else document.documentElement.removeAttribute("data-theme");
+  }
+
   function saveTheme(theme) {
     localStorage.setItem("theme", theme);
   }
@@ -51,14 +59,16 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  function handleSystemThemeChange(e) {
+  function handleSystemThemeChange() {
     const currentTheme = localStorage.getItem("theme") || "default";
     if (currentTheme === "default") {
       loadIconColor();
+      applyTheme("default");
     }
   }
 
   const savedTheme = localStorage.getItem("theme") || "default";
+  applyTheme(savedTheme);
 
   themeButtons.forEach((button) => {
     if (button.value === savedTheme) {
