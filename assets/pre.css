@@ -11,8 +11,10 @@
     font-feature-settings: "calt", "zero";
   }
 
-  body {
+  * {
     font-feature-settings: "calt", "zero";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
