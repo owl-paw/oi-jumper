@@ -8,7 +8,11 @@
     font-style: normal;
     font-display: swap;
     src: url("./JetBrainsMono\[wght\].woff2") format("woff2-variations");
-    font-feature-settings: "zero";
+    font-feature-settings: "calt", "zero";
+  }
+
+  body {
+    font-feature-settings: "calt", "zero";
   }
 }
 
@@ -17,11 +21,13 @@
     @apply flex w-screen min-w-0 justify-center;
   }
 
-  #judge-selector-prob-id, #judge-selector-prob-name {
+  #judge-selector-prob-id,
+  #judge-selector-prob-name {
     @apply mx-1 min-w-24 basis-24 sm:mx-2 sm:min-w-32 sm:basis-40;
   }
 
-  #input-box-prob-id, #input-box-prob-name {
+  #input-box-prob-id,
+  #input-box-prob-name {
     @apply mx-1.5 min-w-32 max-w-80 basis-72 sm:mx-2 sm:basis-80;
   }
 }
