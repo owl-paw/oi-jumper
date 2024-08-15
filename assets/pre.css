@@ -28,6 +28,6 @@
 
   #input-box-prob-id,
   #input-box-prob-name {
-    @apply mx-1.5 min-w-32 max-w-80 basis-72 sm:mx-2 sm:basis-80;
+    @apply mx-1.5 min-w-32 max-w-80 basis-60 sm:mx-2 sm:basis-80;
   }
 }

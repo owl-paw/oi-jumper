@@ -20,28 +20,21 @@
             ✕
           </button>
         </form>
-        <h3 class="text-lg font-bold text-error">错误：弹出页面被阻止</h3>
+        <h3 class="text-lg font-bold text-error">弹出页面被阻止</h3>
         <p class="pt-2">
-          目标网页被浏览器拦截，请将本网站加入浏览器的「拦截弹出式窗口」白名单中。
+          目标网页被浏览器拦截，请将本网站加入浏览器的「拦截弹出式窗口」白名单中。<br />
+          本网站不会弹出任何无意义内容，请放心将其添加至白名单。
         </p>
       </div>
     </dialog>
 
     <!-- Page Title -->
-    <header class="hero-content mt-12 flex-col sm:mt-16">
+    <header class="mt-8 flex-col text-center sm:mt-14">
       <h1 class="text-5xl font-bold text-primary sm:text-[5rem]">
         <a href="#">OI Jumper</a>
       </h1>
-      <p class="text-center text-base text-base-content sm:mt-2 sm:text-xl">
-        made with <span id="the-word" class="text-primary"></span>
-        <br class="sm:hidden" />
-        by
-        <a
-          class="transition-all hover:text-accent"
-          href="https://github.com/owl-paw"
-          target="_blank"
-          >owlpaw</a
-        >
+      <p class="mt-3 text-base text-base-content sm:mt-6 sm:text-xl">
+        made with <span id="the-word" class="text-primary"></span> by owlpaw
       </p>
     </header>
 
@@ -56,7 +49,7 @@
               ✕
             </button>
           </form>
-          <h3 class="text-lg font-bold text-error">错误：题目不存在</h3>
+          <h3 class="text-lg font-bold text-error">题目不存在</h3>
           <p class="pt-2">请输入一个有效的题目编号。</p>
         </div>
       </dialog>
@@ -81,7 +74,7 @@
       />
       <button
         id="submit-button-prob-id"
-        class="btn btn-primary btn-sm mx-1 sm:btn-md sm:mx-2"
+        class="btn btn-outline btn-primary btn-sm mx-1 sm:btn-md sm:mx-2"
       >
         JUMP
       </button>
@@ -98,7 +91,7 @@
               ✕
             </button>
           </form>
-          <h3 class="text-lg font-bold text-error">错误：搜索内容为空</h3>
+          <h3 class="text-lg font-bold text-error">搜索内容为空</h3>
           <p class="pt-2">请输入至少一个字符长的搜索内容。</p>
         </div>
       </dialog>
@@ -122,32 +115,47 @@
       />
       <button
         id="submit-button-prob-name"
-        class="btn btn-primary btn-sm mx-1 sm:btn-md sm:mx-2"
+        class="btn btn-outline btn-primary btn-sm mx-1 sm:btn-md sm:mx-2"
       >
         FIND
       </button>
     </section>
 
-    <footer class="mb-8 mt-auto">
-      <div class="join">
+    <footer class="mb-3 mt-auto text-center sm:mb-6">
+      <button
+        class="btn btn-outline btn-accent btn-sm mx-0.5 mb-2 sm:mb-0"
+        onclick="openLink('https://github.com/owl-paw/oi-jumper')"
+      >
+        GitHub Repo
+      </button>
+      <button
+        class="btn btn-outline btn-secondary btn-sm mx-0.5 mb-2 sm:mb-0"
+        onclick="openLink('https://afdian.com/a/owlpaw/plan')"
+      >
+        Patronage
+      </button>
+
+      <br class="sm:hidden" />
+
+      <div class="join mx-0.5">
         <input
           type="radio"
           name="theme-buttons"
-          class="theme-controller btn join-item"
+          class="theme-controller btn join-item btn-sm"
           aria-label="System"
           value="default"
         />
         <input
           type="radio"
           name="theme-buttons"
-          class="theme-controller btn join-item"
+          class="theme-controller btn join-item btn-sm"
           aria-label="Light"
           value="light"
         />
         <input
           type="radio"
           name="theme-buttons"
-          class="theme-controller btn join-item"
+          class="theme-controller btn join-item btn-sm"
           aria-label="Dark"
           value="dark"
         />
