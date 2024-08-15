@@ -9,7 +9,7 @@
   </head>
 
   <body
-    class="flex h-screen w-screen flex-col items-center bg-base-100 font-mono"
+    class="flex h-screen w-screen flex-col items-center bg-base-200 font-mono"
   >
     <dialog id="page-blocked-alert" class="modal">
       <div class="modal-box">
@@ -122,44 +122,54 @@
     </section>
 
     <footer class="mb-3 mt-auto text-center sm:mb-6">
-      <button
-        class="btn btn-outline btn-accent btn-sm mx-0.5 mb-2 sm:mb-0"
-        onclick="openLink('https://github.com/owl-paw/oi-jumper')"
-      >
-        GitHub Repo
-      </button>
-      <button
-        class="btn btn-outline btn-secondary btn-sm mx-0.5 mb-2 sm:mb-0"
-        onclick="openLink('https://afdian.com/a/owlpaw/plan')"
-      >
-        Patronage
-      </button>
+      <div id="more-info" style="visibility: hidden">
+        <button
+          class="btn btn-outline btn-accent btn-sm mx-0.5 mb-2 sm:mb-0"
+          onclick="openLink('https://github.com/owl-paw/oi-jumper')"
+        >
+          GitHub Repo
+        </button>
+        <button
+          class="btn btn-outline btn-secondary btn-sm mx-0.5 mb-2 sm:mb-0"
+          onclick="openLink('https://afdian.com/a/owlpaw/plan')"
+        >
+          Patronage
+        </button>
 
-      <br class="sm:hidden" />
+        <br class="sm:hidden" />
 
-      <div class="join mx-0.5">
-        <input
-          type="radio"
-          name="theme-buttons"
-          class="theme-controller btn join-item btn-sm"
-          aria-label="System"
-          value="default"
-        />
-        <input
-          type="radio"
-          name="theme-buttons"
-          class="theme-controller btn join-item btn-sm"
-          aria-label="Light"
-          value="light"
-        />
-        <input
-          type="radio"
-          name="theme-buttons"
-          class="theme-controller btn join-item btn-sm"
-          aria-label="Dark"
-          value="dark"
-        />
+        <div class="join mx-0.5">
+          <input
+            type="radio"
+            name="theme-buttons"
+            class="theme-controller btn join-item btn-primary btn-outline btn-sm"
+            aria-label="System"
+            value="default"
+          />
+          <input
+            type="radio"
+            name="theme-buttons"
+            class="theme-controller btn join-item btn-primary btn-outline btn-sm"
+            aria-label="Light"
+            value="light"
+          />
+          <input
+            type="radio"
+            name="theme-buttons"
+            class="theme-controller btn join-item btn-primary btn-outline btn-sm"
+            aria-label="Dark"
+            value="dark"
+          />
+        </div>
       </div>
+
+      <button
+        id="more-info-toggler"
+        class="btn btn-outline btn-sm mx-0.5 mt-4 sm:mb-0"
+        onclick="toggleMoreInfo()"
+      >
+        More Info
+      </button>
     </footer>
 
     <script src="./assets/script.js" type="text/javascript"></script>

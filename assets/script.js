@@ -246,3 +246,16 @@ inputBoxProbName.addEventListener("keydown", function (event) {
     submitButtonProbName.click();
   }
 });
+
+const moreInfoBtn = document.getElementById("more-info-toggler");
+const moreInfo = document.getElementById("more-info");
+
+function toggleMoreInfo() {
+  if (moreInfo.style.visibility === "hidden") {
+    moreInfo.style.visibility = "visible";
+    moreInfoBtn.innerHTML = "Less Info";
+  } else {
+    moreInfo.style.visibility = "hidden";
+    moreInfoBtn.innerHTML = "More Info";
+  }
+}
