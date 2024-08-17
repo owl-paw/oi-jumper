@@ -6,25 +6,56 @@
     <title>OI Jumper</title>
     <link href="./assets/main.css" rel="stylesheet" />
     <link rel="icon" type="image/svg" href="./assets/icon.svg" />
+
+    <script>
+      function loadLanguage(lang) {
+        document.documentElement.setAttribute("lang", lang);
+
+        fetch("assets/" + lang + ".json")
+          .then((response) => response.json())
+          .then((data) => {
+            document.getElementById("pba-title").innerHTML = data.pba.title;
+            document.getElementById("pba-details").innerHTML = data.pba.details;
+            document.getElementById("iid-title").innerHTML = data.iid.title;
+            document.getElementById("iid-details").innerHTML = data.iid.details;
+            document.getElementById("itm-title").innerHTML = data.itm.title;
+            document.getElementById("itm-details").innerHTML = data.itm.details;
+            document.getElementById("input-box-prob-id").placeholder = data.prob_id.input;
+            document.getElementById("submit-button-prob-id").innerHTML = data.prob_id.btn;
+            document.getElementById("input-box-prob-name").placeholder = data.prob_name.input;
+            document.getElementById("submit-button-prob-name").innerHTML = data.prob_name.btn;
+            document.getElementById("github").innerHTML = data.settings.github;
+            document.getElementById("sponsor").innerHTML = data.settings.sponsor;
+            document.getElementById("system-scheme").setAttribute("aria-label", data.settings.auto);
+            document.getElementById("light-scheme").setAttribute("aria-label", data.settings.light);
+            document.getElementById("dark-scheme").setAttribute("aria-label", data.settings.dark);
+
+            document.getElementById("more-info-toggler").innerHTML =
+              document.getElementById("more-info").style.visibility === "hidden"
+                ? data.settings.open
+                : data.settings.collapse;
+
+            localStorage.setItem("preferredLanguage", lang);
+          });
+      }
+
+      function initLanguage() {
+        const savedLang = localStorage.getItem("preferredLanguage") || "zh";
+        loadLanguage(savedLang);
+      }
+
+      window.onload = initLanguage();
+    </script>
   </head>
 
-  <body
-    class="flex h-screen w-screen flex-col items-center bg-base-200 font-mono"
-  >
-    <dialog id="page-blocked-alert" class="modal">
+  <body class="flex h-screen w-screen flex-col items-center bg-base-200 font-mono">
+    <dialog id="pba" class="modal">
       <div class="modal-box">
         <form method="dialog">
-          <button
-            class="btn btn-circle btn-ghost btn-sm absolute right-2 top-2"
-          >
-            ✕
-          </button>
+          <button class="btn btn-circle btn-ghost btn-sm absolute right-2 top-2">✕</button>
         </form>
-        <h3 class="text-lg font-bold text-error">弹出页面被阻止</h3>
-        <p class="pt-2">
-          目标网页被浏览器拦截，请将本网站加入浏览器的「拦截弹出式窗口」白名单中。<br />
-          本网站不会弹出任何无意义内容，请放心将其添加至白名单。
-        </p>
+        <h3 id="pba-title" class="text-lg font-bold text-error"></h3>
+        <p id="pba-details" class="pt-2"></p>
       </div>
     </dialog>
 
@@ -40,23 +71,16 @@
 
     <!-- Problem Jumper  -->
     <section class="input-suite mt-6 sm:mt-10">
-      <dialog id="invalid-id" class="modal">
+      <dialog id="iid" class="modal">
         <div class="modal-box">
           <form method="dialog">
-            <button
-              class="btn btn-circle btn-ghost btn-sm absolute right-2 top-2"
-            >
-              ✕
-            </button>
+            <button class="btn btn-circle btn-ghost btn-sm absolute right-2 top-2">✕</button>
           </form>
-          <h3 class="text-lg font-bold text-error">题目不存在</h3>
-          <p class="pt-2">请输入一个有效的题目编号。</p>
+          <h3 id="iid-title" class="text-lg font-bold text-error"></h3>
+          <p id="iid-details" class="pt-2"></p>
         </div>
       </dialog>
-      <select
-        id="judge-selector-prob-id"
-        class="select select-bordered select-sm sm:select-md"
-      >
+      <select id="judge-selector-prob-id" class="select select-bordered select-sm sm:select-md">
         <option value="bz">BZOJ</option>
         <option value="cf">Codeforces</option>
         <option value="dm">DMOJ</option>
@@ -66,39 +90,27 @@
         <option value="pku">POJ 北大</option>
         <option value="sp">SPOJ</option>
         <option value="uoj">UniversalOJ</option>
+        <option value="vj">Virtual Judge</option>
       </select>
-      <input
-        id="input-box-prob-id"
-        class="input input-sm input-bordered sm:input-md"
-        placeholder="题目编号"
-      />
+      <input id="input-box-prob-id" class="input input-sm input-bordered sm:input-md" />
       <button
         id="submit-button-prob-id"
         class="btn btn-primary btn-sm mx-1 sm:btn-md sm:mx-2"
-      >
-        JUMP
-      </button>
+      ></button>
     </section>
 
     <!-- Problem Name Search -->
     <section class="input-suite mt-2 sm:mt-4">
-      <dialog id="invalid-term" class="modal">
+      <dialog id="itm" class="modal">
         <div class="modal-box">
           <form method="dialog">
-            <button
-              class="btn btn-circle btn-ghost btn-sm absolute right-2 top-2"
-            >
-              ✕
-            </button>
+            <button class="btn btn-circle btn-ghost btn-sm absolute right-2 top-2">✕</button>
           </form>
-          <h3 class="text-lg font-bold text-error">搜索内容为空</h3>
-          <p class="pt-2">请输入至少一个字符长的搜索内容。</p>
+          <h3 id="itm-title" class="text-lg font-bold text-error"></h3>
+          <p id="itm-details" class="pt-2"></p>
         </div>
       </dialog>
-      <select
-        id="judge-selector-prob-name"
-        class="select select-bordered select-sm sm:select-md"
-      >
+      <select id="judge-selector-prob-name" class="select select-bordered select-sm sm:select-md">
         <option value="acw">AcWing</option>
         <option value="at">AtCoder</option>
         <option value="bz">BZOJ</option>
@@ -108,32 +120,46 @@
         <option value="lg" selected>Luogu 洛谷</option>
         <option value="uoj">UniversalOJ</option>
       </select>
-      <input
-        id="input-box-prob-name"
-        class="input input-sm input-bordered sm:input-md"
-        placeholder="题目名称"
-      />
+      <input id="input-box-prob-name" class="input input-sm input-bordered sm:input-md" />
       <button
         id="submit-button-prob-name"
         class="btn btn-primary btn-sm mx-1 sm:btn-md sm:mx-2"
-      >
-        FIND
-      </button>
+      ></button>
     </section>
 
     <footer class="mb-3 mt-auto text-center sm:mb-6">
       <div id="more-info" style="visibility: hidden">
         <button
-          class="btn btn-outline btn-accent btn-sm mx-0.5 mb-2 sm:mb-0"
+          class="btn btn-primary btn-xs mx-0.5 mb-2 sm:btn-sm sm:mb-0"
           onclick="openLink('https://github.com/owl-paw/oi-jumper')"
         >
-          GitHub Repo
+          <span id="github"></span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="20px"
+            viewBox="0 -960 960 960"
+            width="20px"
+          >
+            <path
+              d="M216-144q-29.7 0-50.85-21.15Q144-186.3 144-216v-528q0-29.7 21.15-50.85Q186.3-816 216-816h264v72H216v528h528v-264h72v264q0 29.7-21.15 50.85Q773.7-144 744-144H216Zm171-192-51-51 357-357H576v-72h240v240h-72v-117L387-336Z"
+            />
+          </svg>
         </button>
         <button
-          class="btn btn-outline btn-secondary btn-sm mx-0.5 mb-2 sm:mb-0"
+          class="btn btn-primary btn-xs mx-0.5 mb-2 sm:btn-sm sm:mb-0"
           onclick="openLink('https://afdian.com/a/owlpaw/plan')"
         >
-          Patronage
+          <span id="sponsor"></span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="20px"
+            viewBox="0 -960 960 960"
+            width="20px"
+          >
+            <path
+              d="M216-144q-29.7 0-50.85-21.15Q144-186.3 144-216v-528q0-29.7 21.15-50.85Q186.3-816 216-816h264v72H216v528h528v-264h72v264q0 29.7-21.15 50.85Q773.7-144 744-144H216Zm171-192-51-51 357-357H576v-72h240v240h-72v-117L387-336Z"
+            />
+          </svg>
         </button>
 
         <br class="sm:hidden" />
@@ -142,22 +168,22 @@
           <input
             type="radio"
             name="theme-buttons"
-            class="theme-controller btn btn-outline btn-primary join-item btn-sm"
-            aria-label="System"
+            id="system-scheme"
+            class="theme-controller btn btn-outline btn-primary join-item btn-xs sm:btn-sm"
             value="default"
           />
           <input
             type="radio"
             name="theme-buttons"
-            class="theme-controller btn btn-outline btn-primary join-item btn-sm"
-            aria-label="Light"
+            id="light-scheme"
+            class="theme-controller btn btn-outline btn-primary join-item btn-xs sm:btn-sm"
             value="light"
           />
           <input
             type="radio"
             name="theme-buttons"
-            class="theme-controller btn btn-outline btn-primary join-item btn-sm"
-            aria-label="Dark"
+            id="dark-scheme"
+            class="theme-controller btn btn-outline btn-primary join-item btn-xs sm:btn-sm"
             value="dark"
           />
         </div>
@@ -165,11 +191,28 @@
 
       <button
         id="more-info-toggler"
-        class="btn btn-outline btn-sm mx-0.5 mt-4 sm:mb-0"
+        class="btn btn-primary btn-xs mx-0.5 mt-4 sm:btn-sm sm:mb-0"
         onclick="toggleMoreInfo()"
-      >
-        More Info
-      </button>
+      ></button>
+
+      <div class="join">
+        <input
+          class="btn btn-outline btn-primary join-item btn-xs sm:btn-sm"
+          type="radio"
+          name="language-selector"
+          id="chn-btn"
+          onclick="loadLanguage('zh')"
+          aria-label="中文"
+        />
+        <input
+          class="btn btn-outline btn-primary join-item btn-xs sm:btn-sm"
+          type="radio"
+          name="language-selector"
+          id="eng-btn"
+          onclick="loadLanguage('en')"
+          aria-label="English"
+        />
+      </div>
     </footer>
 
     <script src="./assets/script.js" type="text/javascript"></script>

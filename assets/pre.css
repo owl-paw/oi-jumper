@@ -8,7 +8,6 @@
     font-style: normal;
     font-display: swap;
     src: url("./JetBrainsMono\[wght\].woff2") format("woff2-variations");
-    font-feature-settings: "calt", "zero";
   }
 
   * {

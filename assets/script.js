@@ -1,3 +1,7 @@
+document
+  .getElementById(document.documentElement.lang === "zh" ? "chn-btn" : "eng-btn")
+  .setAttribute("checked", "checked");
+
 const theWord = document.getElementById("the-word");
 
 function randomizeWord() {
@@ -39,10 +43,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const themeButtons = document.querySelectorAll(".theme-controller");
 
   function applyTheme(theme) {
-    if (theme === "light")
-      document.documentElement.setAttribute("data-theme", "light");
-    else if (theme === "dark")
-      document.documentElement.setAttribute("data-theme", "dark");
+    if (theme === "light") document.documentElement.setAttribute("data-theme", "light");
+    else if (theme === "dark") document.documentElement.setAttribute("data-theme", "dark");
     else document.documentElement.removeAttribute("data-theme");
   }
 
@@ -100,7 +102,7 @@ const submitButtonProbName = document.getElementById("submit-button-prob-name");
 function openLink(url) {
   var popUp = window.open(url);
   if (!popUp || popUp.closed || typeof popUp.closed == "undefined") {
-    const alert = document.getElementById("page-blocked-alert");
+    const alert = document.getElementById("pba");
     alert.showModal();
   }
 }
@@ -110,7 +112,7 @@ submitButtonProbId.addEventListener("click", function () {
   const inputValue = inputBoxProbId.value;
 
   if (!inputValue) {
-    const alert = document.getElementById("invalid-id");
+    const alert = document.getElementById("iid");
     alert.showModal();
     return;
   }
@@ -124,8 +126,7 @@ submitButtonProbId.addEventListener("click", function () {
     const re = /^[BP]?\d{4,5}$/;
     if (re.test(inputValue)) {
       var baseUrl = "https://www.luogu.com.cn/problem/";
-      if (inputValue[0] !== "P" && inputValue[0] !== "B")
-        baseUrl = baseUrl + "P";
+      if (inputValue[0] !== "P" && inputValue[0] !== "B") baseUrl = baseUrl + "P";
       openLink(baseUrl + inputValue);
       return;
     }
@@ -142,19 +143,10 @@ submitButtonProbId.addEventListener("click", function () {
     if (re.test(inputValue)) {
       const match = re.exec(inputValue);
       if (!match[3])
-        openLink(
-          "https://codeforces.com/problemset/problem/" +
-            match[1] +
-            "/" +
-            match[2],
-        );
+        openLink("https://codeforces.com/problemset/problem/" + match[1] + "/" + match[2]);
       else
         openLink(
-          "https://codeforces.com/problemset/problem/" +
-            match[1] +
-            "/" +
-            match[2] +
-            match[3],
+          "https://codeforces.com/problemset/problem/" + match[1] + "/" + match[2] + match[3],
         );
       return;
     }
@@ -194,9 +186,12 @@ submitButtonProbId.addEventListener("click", function () {
   } else if (judgeSelectorProbId.value === "dm") {
     openLink(`https://dmoj.ca/problem/${inputValue}`);
     return;
+  } else if (judgeSelectorProbId.value === "vj") {
+    openLink(`https://vjudge.net/problem/${inputValue}`);
+    return;
   }
 
-  const alert = document.getElementById("invalid-id");
+  const alert = document.getElementById("iid");
   alert.showModal();
 });
 
@@ -207,13 +202,11 @@ inputBoxProbId.addEventListener("keydown", function (event) {
 });
 
 submitButtonProbName.addEventListener("click", function () {
-  const judgeSelectorProbName = document.getElementById(
-    "judge-selector-prob-name",
-  );
+  const judgeSelectorProbName = document.getElementById("judge-selector-prob-name");
   const inputValue = inputBoxProbName.value;
 
   if (!inputValue) {
-    const alert = document.getElementById("invalid-term");
+    const alert = document.getElementById("itm");
     alert.showModal();
     return;
   }
@@ -253,9 +246,9 @@ const moreInfo = document.getElementById("more-info");
 function toggleMoreInfo() {
   if (moreInfo.style.visibility === "hidden") {
     moreInfo.style.visibility = "visible";
-    moreInfoBtn.innerHTML = "Less Info";
+    moreInfoBtn.innerHTML = document.documentElement.lang === "en" ? "Hide Settings" : "收起设置";
   } else {
     moreInfo.style.visibility = "hidden";
-    moreInfoBtn.innerHTML = "More Info";
+    moreInfoBtn.innerHTML = document.documentElement.lang === "en" ? "Show Settings" : "展开设置";
   }
 }
