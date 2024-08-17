@@ -1,6 +1,94 @@
-document
-  .getElementById(document.documentElement.lang === "zh" ? "chn-btn" : "eng-btn")
-  .setAttribute("checked", "checked");
+const cacheName = "i18n-cache-v1";
+const languageFiles = {
+  en: "./assets/en.json",
+  zh: "./assets/zh.json",
+};
+
+function cacheLanguageFiles() {
+  if ("caches" in window) {
+    caches.open(cacheName).then((cache) => {
+      Object.values(languageFiles).forEach((file) => {
+        cache.add(file).catch((err) => {
+          console.error(`Failed to cache ${file}: `, err);
+        });
+      });
+    });
+  }
+}
+
+function loadLanguage(lang) {
+  document.documentElement.setAttribute("lang", lang);
+  const url = languageFiles[lang];
+
+  if ("caches" in window) {
+    caches
+      .match(url)
+      .then((response) => {
+        if (response) {
+          return response.json();
+        } else {
+          return fetch(url).then((response) => {
+            caches.open(cacheName).then((cache) => cache.put(url, response.clone()));
+            return response.json();
+          });
+        }
+      })
+      .then((data) => {
+        updatePageWithLanguageData(data);
+        localStorage.setItem("preferredLanguage", lang);
+        updateLanguageSwitcher(lang);
+      })
+      .catch((error) => {
+        console.error("Error loading language data: ", error);
+      });
+  } else {
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        updatePageWithLanguageData(data);
+        localStorage.setItem("preferredLanguage", lang);
+        updateLanguageSwitcher(lang);
+      });
+  }
+}
+
+function updateLanguageSwitcher(lang) {
+  const selectedButton = document.getElementById(lang === "zh" ? "chn-btn" : "eng-btn");
+  selectedButton.setAttribute("checked", "checked");
+}
+
+function updatePageWithLanguageData(data) {
+  document.getElementById("pba-title").innerHTML = data.pba.title;
+  document.getElementById("pba-details").innerHTML = data.pba.details;
+  document.getElementById("iid-title").innerHTML = data.iid.title;
+  document.getElementById("iid-details").innerHTML = data.iid.details;
+  document.getElementById("itm-title").innerHTML = data.itm.title;
+  document.getElementById("itm-details").innerHTML = data.itm.details;
+  document.getElementById("input-box-prob-id").placeholder = data.prob_id.input;
+  document.getElementById("submit-button-prob-id").innerHTML = data.prob_id.btn;
+  document.getElementById("input-box-prob-name").placeholder = data.prob_name.input;
+  document.getElementById("submit-button-prob-name").innerHTML = data.prob_name.btn;
+  document.getElementById("github").innerHTML = data.settings.github;
+  document.getElementById("sponsor").innerHTML = data.settings.sponsor;
+  document.getElementById("system-scheme").setAttribute("aria-label", data.settings.auto);
+  document.getElementById("light-scheme").setAttribute("aria-label", data.settings.light);
+  document.getElementById("dark-scheme").setAttribute("aria-label", data.settings.dark);
+
+  document.getElementById("more-info-toggler").innerHTML =
+    document.getElementById("more-info").style.visibility === "hidden"
+      ? data.settings.open
+      : data.settings.collapse;
+}
+
+function initLanguage() {
+  const savedLang = localStorage.getItem("preferredLanguage") || "zh";
+  loadLanguage(savedLang);
+}
+
+window.onload = function () {
+  initLanguage();
+  cacheLanguageFiles();
+};
 
 const theWord = document.getElementById("the-word");
 
