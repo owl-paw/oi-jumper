@@ -1,11 +1,3 @@
-function openLink(url) {
-  var popUp = window.open(url);
-  if (!popUp || popUp.closed || typeof popUp.closed == "undefined") {
-    const alert = document.getElementById("pba");
-    alert.showModal();
-  }
-}
-
 const probIdRule = {
   lg: /^[BP]?\d{4,5}$/,
   lib: /^[#]?\d{1,5}$/,
@@ -14,25 +6,30 @@ const probIdRule = {
   pku: /^[#]?\d{4}$/,
   hdu: /^[#]?\d{4}$/,
   bz: /^[P]?\d{3,5}$/,
+  vj: /^\S+-\S+$/,
 };
 
 const inputPid = document.getElementById("input-pid");
 const inputPna = document.getElementById("input-pna");
 const submitPid = document.getElementById("submit-pid");
 const submitPna = document.getElementById("submit-pna");
+const catchPhraseHash = "816280b1928a963b53a78bfe4aea8275a07972b0bc9dd05e65448e3a57cb8ae1";
 
-submitPid.addEventListener("click", () => {
+async function sha256(message) {
+  const msgBuffer = new TextEncoder().encode(message);
+  const hashBuffer = await crypto.subtle.digest("SHA-256", msgBuffer);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  const hashHex = hashArray.map((b) => b.toString(16).padStart(2, "0")).join("");
+  return hashHex;
+}
+
+submitPid.addEventListener("click", async () => {
   const selectPid = document.getElementById("select-pid");
   const text = inputPid.value;
 
-  if (!text) {
-    const alert = document.getElementById("iid");
-    alert.showModal();
-    return;
-  }
-
-  if (text === "114514") {
-    window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+  if ((await sha256(text)) === catchPhraseHash) {
+    if (document.documentElement.lang === "zh") window.open("https://www.bilibili.com/video/BV1GJ411x7h7");
+    else window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
     return;
   }
 
@@ -41,58 +38,61 @@ submitPid.addEventListener("click", () => {
     if (re.test(text)) {
       var baseUrl = "https://www.luogu.com.cn/problem/";
       if (text[0] !== "P" && text[0] !== "B") baseUrl = baseUrl + "P";
-      openLink(baseUrl + text);
+      window.open(baseUrl + text);
     }
   } else if (selectPid.value === "lib") {
     const re = probIdRule.lib;
     if (re.test(text)) {
       var probId = text;
       if (text[0] === "#") probId = text.substring(1);
-      openLink("https://loj.ac/p/" + probId);
+      window.open(`https://loj.ac/p/${probId}`);
     }
   } else if (selectPid.value === "cf") {
     const re = probIdRule.cf;
     if (re.test(text)) {
       const match = re.exec(text);
-      if (!match[3]) openLink("https://codeforces.com/problemset/problem/" + match[1] + "/" + match[2]);
-      else openLink("https://codeforces.com/problemset/problem/" + match[1] + "/" + match[2] + match[3]);
+      if (!match[3]) window.open(`https://codeforces.com/problemset/problem/${match[1]}/${match[2]}`);
+      else window.open(`https://codeforces.com/problemset/problem/${match[1]}/${match[2]}${match[3]}`);
     }
   } else if (selectPid.value === "uoj") {
     const re = probIdRule.uoj;
     if (re.test(text)) {
       var probId = text;
       if (text[0] === "#") probId = text.substring(1);
-      openLink("https://uoj.ac/problem/" + probId);
+      window.open(`https://uoj.ac/problem/${probId}`);
     }
   } else if (selectPid.value === "pku") {
     const re = probIdRule.pku;
     if (re.test(text)) {
-      var probId = text;
-      openLink("http://poj.org/problem?id=" + probId);
+      window.open(`http://poj.org/problem?id=${probId}`);
     }
   } else if (selectPid.value === "hdu") {
     const re = probIdRule.hdu;
     if (re.test(text)) {
-      var probId = text;
-      openLink("https://acm.hdu.edu.cn/showproblem.php?pid=" + probId);
+      window.open(`https://acm.hdu.edu.cn/showproblem.php?pid=${probId}`);
     }
   } else if (selectPid.value === "bz") {
     const re = probIdRule.bz;
     if (re.test(text)) {
       var baseUrl = "https://new.bzoj.org:88/p/";
       if (text[0] !== "P") baseUrl = baseUrl + "P";
-      openLink(baseUrl + text);
+      window.open(baseUrl + text);
     }
-  } else if (selectPid.value === "sp") openLink(`https://www.spoj.com/problems/${text}/`);
-  else if (selectPid.value === "dm") openLink(`https://dmoj.ca/problem/${text}`);
-  else if (selectPid.value === "vj") openLink(`https://vjudge.net/problem/${text}`);
+  } else if (selectPid.value === "vj") {
+    const re = probIdRule.vj;
+    if (re.test(text)) window.open(`https://vjudge.net/problem/${text}`);
+  } else if (selectPid.value === "sp") {
+    window.open(`https://www.spoj.com/problems/${text}/`);
+  } else if (selectPid.value === "dm") {
+    window.open(`https://dmoj.ca/problem/${text}`);
+  }
 });
 
 inputPid.addEventListener("keydown", (event) => {
   if (event.key === "Enter") submitPid.click();
 });
 
-inputPid.addEventListener("input", () => {
+inputPid.addEventListener("input", async () => {
   const selectPid = document.getElementById("select-pid");
   const text = inputPid.value;
 
@@ -106,7 +106,7 @@ inputPid.addEventListener("input", () => {
 
   var reg = selectPid.value in probIdRule ? probIdRule[selectPid.value] : /[\s\S]*/;
 
-  if (!text !== "114514" && !reg.test(text)) {
+  if (!reg.test(text) && (await sha256(text)) !== catchPhraseHash) {
     inputPid.classList.add("input-error");
     submitPid.classList.add("btn-disabled");
     submitPid.classList.remove("btn-active");
@@ -123,12 +123,6 @@ submitPna.addEventListener("click", () => {
   const selectPna = document.getElementById("select-pna");
   const text = inputPna.value;
 
-  if (!text) {
-    const alert = document.getElementById("itm");
-    alert.showModal();
-    return;
-  }
-
   var tar;
 
   if (selectPna.value === "lg") tar = `https://www.luogu.com.cn/problem/list?keyword=${text}&type=B|P&page=1`;
@@ -137,10 +131,15 @@ submitPna.addEventListener("click", () => {
   else if (selectPna.value === "acw") tar = `https://www.acwing.com/problem/search/1/?search_content=${text}`;
   else if (selectPna.value === "dm") tar = `https://dmoj.ca/problems/?search=${text}`;
   else if (selectPna.value === "uoj") tar = `https://uoj.ac/problems?search=${text}`;
-  else if (selectPna.value === "cf") tar = `https://www.google.com/search?q=${text}+site%3Acodeforces.com`;
-  else if (selectPna.value === "at") tar = `https://www.google.com/search?q=${text}+site%3Aatcoder.jp`;
+  else if (selectPna.value === "cf") {
+    if (document.documentElement.lang === "zh") tar = `https://www.bing.com/search?q=${text}+site%3Acodeforces.com`;
+    else tar = `https://www.google.com/search?q=${text}+site%3Acodeforces.com`;
+  } else if (selectPna.value === "at") {
+    if (document.documentElement.lang === "zh") tar = `https://www.bing.com/search?q=${text}+site%3Aatcoder.jp`;
+    else tar = `https://www.google.com/search?q=${text}+site%3Aatcoder.jp`;
+  }
 
-  openLink(tar);
+  window.open(tar);
 });
 
 inputPna.addEventListener("keydown", (event) => {

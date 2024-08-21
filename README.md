@@ -17,3 +17,11 @@ Select the CP platform in which your requested programming problem is hosted[^1]
 OI Jumper is a static site built using Tailwind and daisyUI. This is my first attempt at using a web framework to develop projects, and I feel very good about the combo of these two.
 
 If you encounter any trouble when using this tool, or that you would like to add something to make the site better, it's always welcomed and appreciated to open issues and create pull requests. I'll make time to review and respond, but sadly there's no guarantee on my availability since I still got school studies to work on.
+
+## Catchphrase Hunting
+
+Well, in case you have any spare time, I'm glad to tell you that I've put something interesting in this project.
+
+Every now and then I'll set a secret catchphrase that I've come up with (it's definitely something **not uncommon** that you can find on the Internet or somewhere else). Enter the catchphrase in the Problem ID input field, and if it's correct, the site will allow you to submit the answer even if the catchphrase doesn't match the input format for the currently selected CP platform. Submit the catchphrase and you'll be directed to Bilibili or YouTube (depending on the chosen language) and intentionally rickrolled.
+
+Unless explicitly mentioned, catchphrases may only contain lower-case unaccented latin letters and numbers. The current catchphrase, hashed with SHA-256, is `816280b1928a963b53a78bfe4aea8275a07972b0bc9dd05e65448e3a57cb8ae1`.
