@@ -1,19 +1,4 @@
 {
-  "pba": {
-    "title": "Pop-up blocked by browser.",
-    "details": "The requested page is blocked by your browser from opening. Please consider adding this site to your browser's exception list of pop-up blocking. We guarantee that only user-requested pages will be opened from this site, hence show no worries allowing the site to send pop-ups."
-  },
-
-  "iid": {
-    "title": "Requested problem doesn't exist.",
-    "details": "Please enter a valid problem ID."
-  },
-
-  "itm": {
-    "title": "Search term is empty.",
-    "details": "Please enter a search term that's at least 1 character in length."
-  },
-
   "prob_id": {
     "input": "Problem ID",
     "btn": "JUMP"

@@ -1,40 +1,20 @@
 <!doctype html>
+
 <html>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>OI Jumper</title>
+    <meta name="title" content="OI Jumper" />
+    <meta
+      name="description"
+      content="The tool allows you to efficiently jump to any CP problem on various platforms."
+    />
     <link href="./assets/main.css" rel="stylesheet" />
     <link rel="icon" type="image/svg" href="./assets/icon.svg" />
-
-    <link
-      rel="preload"
-      type="application/json"
-      href="./assets/en.json"
-      as="fetch"
-      crossorigin="anonymous"
-    />
-
-    <link
-      rel="preload"
-      type="application/json"
-      href="./assets/zh.json"
-      as="fetch"
-      crossorigin="anonymous"
-    />
   </head>
 
   <body class="flex h-screen w-screen flex-col items-center bg-base-100 font-mono">
-    <dialog id="pba" class="modal">
-      <div class="modal-box">
-        <form method="dialog">
-          <button class="btn btn-circle btn-ghost btn-sm absolute right-2 top-2">✕</button>
-        </form>
-        <h3 id="pba-title" class="text-lg font-bold text-error"></h3>
-        <p id="pba-details" class="pt-2"></p>
-      </div>
-    </dialog>
-
     <!-- Page Title -->
     <header class="mt-8 flex-col text-center sm:mt-14">
       <h1 class="text-5xl font-bold text-primary sm:text-[5rem]">
@@ -47,16 +27,7 @@
 
     <!-- Problem Jumper  -->
     <section class="input-suite mt-6 sm:mt-10">
-      <dialog id="iid" class="modal">
-        <div class="modal-box">
-          <form method="dialog">
-            <button class="btn btn-circle btn-ghost btn-sm absolute right-2 top-2">✕</button>
-          </form>
-          <h3 id="iid-title" class="text-lg font-bold text-error"></h3>
-          <p id="iid-details" class="pt-2"></p>
-        </div>
-      </dialog>
-      <select id="judge-selector-prob-id" class="select select-bordered select-sm sm:select-md">
+      <select id="select-pid" class="select select-bordered select-sm transition-all sm:select-md">
         <option value="bz">BZOJ</option>
         <option value="cf">Codeforces</option>
         <option value="dm">DMOJ</option>
@@ -68,25 +39,17 @@
         <option value="uoj">UniversalOJ</option>
         <option value="vj">Virtual Judge</option>
       </select>
-      <input id="input-box-prob-id" class="input input-sm input-bordered sm:input-md" />
+      <input id="input-pid" class="input input-sm input-bordered transition-all sm:input-md" />
       <button
-        id="submit-button-prob-id"
-        class="btn btn-primary btn-sm mx-1 sm:btn-md sm:mx-2"
+        id="submit-pid"
+        tabindex="-1"
+        class="btn btn-disabled btn-primary btn-sm mx-1 transition-all sm:btn-md sm:mx-2"
       ></button>
     </section>
 
     <!-- Problem Name Search -->
     <section class="input-suite mt-2 sm:mt-4">
-      <dialog id="itm" class="modal">
-        <div class="modal-box">
-          <form method="dialog">
-            <button class="btn btn-circle btn-ghost btn-sm absolute right-2 top-2">✕</button>
-          </form>
-          <h3 id="itm-title" class="text-lg font-bold text-error"></h3>
-          <p id="itm-details" class="pt-2"></p>
-        </div>
-      </dialog>
-      <select id="judge-selector-prob-name" class="select select-bordered select-sm sm:select-md">
+      <select id="select-pna" class="select select-bordered select-sm transition-all sm:select-md">
         <option value="acw">AcWing</option>
         <option value="at">AtCoder</option>
         <option value="bz">BZOJ</option>
@@ -96,10 +59,11 @@
         <option value="lg" selected>Luogu 洛谷</option>
         <option value="uoj">UniversalOJ</option>
       </select>
-      <input id="input-box-prob-name" class="input input-sm input-bordered sm:input-md" />
+      <input id="input-pna" class="input input-sm input-bordered transition-all sm:input-md" />
       <button
-        id="submit-button-prob-name"
-        class="btn btn-primary btn-sm mx-1 sm:btn-md sm:mx-2"
+        id="submit-pna"
+        tabindex="-1"
+        class="btn btn-disabled btn-primary btn-sm mx-1 transition-all sm:btn-md sm:mx-2"
       ></button>
     </section>
 
@@ -171,6 +135,7 @@
       </div>
     </footer>
 
+    <script src="./assets/onload.js" type="text/javascript"></script>
     <script src="./assets/script.js" type="text/javascript"></script>
   </body>
 </html>

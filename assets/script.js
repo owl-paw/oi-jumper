@@ -1,192 +1,3 @@
-const cacheName = "i18n-cache-v1";
-const languageFiles = {
-  en: "./assets/en.json",
-  zh: "./assets/zh.json",
-};
-
-function cacheLanguageFiles() {
-  if ("caches" in window) {
-    caches.open(cacheName).then((cache) => {
-      Object.values(languageFiles).forEach((file) => {
-        cache.add(file).catch((err) => {
-          console.error(`Failed to cache ${file}: `, err);
-        });
-      });
-    });
-  }
-}
-
-function loadLanguage(lang) {
-  document.documentElement.setAttribute("lang", lang);
-  const url = languageFiles[lang];
-
-  if ("caches" in window) {
-    caches
-      .match(url)
-      .then((response) => {
-        if (response) {
-          return response.json();
-        } else {
-          return fetch(url).then((response) => {
-            caches.open(cacheName).then((cache) => cache.put(url, response.clone()));
-            return response.json();
-          });
-        }
-      })
-      .then((data) => {
-        updatePageWithLanguageData(data);
-        localStorage.setItem("preferredLanguage", lang);
-        updateLanguageSwitcher(lang);
-      })
-      .catch((error) => {
-        console.error("Error loading language data: ", error);
-      });
-  } else {
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        updatePageWithLanguageData(data);
-        localStorage.setItem("preferredLanguage", lang);
-        updateLanguageSwitcher(lang);
-      });
-  }
-}
-
-function updateLanguageSwitcher(lang) {
-  const selectedButton = document.getElementById(lang === "zh" ? "chn-btn" : "eng-btn");
-  selectedButton.setAttribute("checked", "checked");
-}
-
-function updatePageWithLanguageData(data) {
-  document.getElementById("pba-title").innerHTML = data.pba.title;
-  document.getElementById("pba-details").innerHTML = data.pba.details;
-  document.getElementById("iid-title").innerHTML = data.iid.title;
-  document.getElementById("iid-details").innerHTML = data.iid.details;
-  document.getElementById("itm-title").innerHTML = data.itm.title;
-  document.getElementById("itm-details").innerHTML = data.itm.details;
-  document.getElementById("input-box-prob-id").placeholder = data.prob_id.input;
-  document.getElementById("submit-button-prob-id").innerHTML = data.prob_id.btn;
-  document.getElementById("input-box-prob-name").placeholder = data.prob_name.input;
-  document.getElementById("submit-button-prob-name").innerHTML = data.prob_name.btn;
-  document.getElementById("github").innerHTML = data.settings.github;
-  document.getElementById("sponsor").innerHTML = data.settings.sponsor;
-  document.getElementById("system-scheme").setAttribute("aria-label", data.settings.auto);
-  document.getElementById("light-scheme").setAttribute("aria-label", data.settings.light);
-  document.getElementById("dark-scheme").setAttribute("aria-label", data.settings.dark);
-
-  document.getElementById("more-info-toggler").innerHTML =
-    document.getElementById("more-info").style.visibility === "hidden"
-      ? data.settings.open
-      : data.settings.collapse;
-}
-
-function initLanguage() {
-  const savedLang = localStorage.getItem("preferredLanguage") || "zh";
-  loadLanguage(savedLang);
-}
-
-window.onload = function () {
-  initLanguage();
-  cacheLanguageFiles();
-};
-
-const theWord = document.getElementById("the-word");
-
-function randomizeWord() {
-  const words = [
-    "???",
-    "time",
-    "code",
-    "love",
-    "rage",
-    "bugs",
-    "faith",
-    "atoms",
-    "magic",
-    "humor",
-    "regret",
-    "coffee",
-    "dreams",
-    "hatred",
-    "science",
-    "respect",
-    "madness",
-    "morality",
-    "devotion",
-    "stupidity",
-    "sacrilege",
-    "dedication",
-    "randomness",
-    "javascript",
-    "[REDACTED]",
-    "intelligence",
-  ];
-  const randomWord = words[Math.floor(Math.random() * words.length)];
-  theWord.textContent = randomWord;
-}
-
-randomizeWord();
-
-document.addEventListener("DOMContentLoaded", function () {
-  const themeButtons = document.querySelectorAll(".theme-controller");
-
-  function applyTheme(theme) {
-    if (theme === "light") document.documentElement.setAttribute("data-theme", "light");
-    else if (theme === "dark") document.documentElement.setAttribute("data-theme", "dark");
-    else document.documentElement.removeAttribute("data-theme");
-  }
-
-  function saveTheme(theme) {
-    localStorage.setItem("theme", theme);
-  }
-
-  function loadIconColor() {
-    const favicon = document.querySelector("link[rel='icon']");
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      favicon.setAttribute("href", "./assets/icon-dark.svg");
-    } else {
-      favicon.setAttribute("href", "./assets/icon.svg");
-    }
-  }
-
-  function handleSystemThemeChange() {
-    const currentTheme = localStorage.getItem("theme") || "default";
-    if (currentTheme === "default") {
-      loadIconColor();
-      applyTheme("default");
-    }
-  }
-
-  const savedTheme = localStorage.getItem("theme") || "default";
-  applyTheme(savedTheme);
-
-  themeButtons.forEach((button) => {
-    if (button.value === savedTheme) {
-      button.checked = true;
-    }
-
-    button.addEventListener("change", function () {
-      const selectedTheme = this.value;
-      applyTheme(selectedTheme);
-      saveTheme(selectedTheme);
-    });
-  });
-
-  loadIconColor();
-
-  window
-    .matchMedia("(prefers-color-scheme: dark)")
-    .addEventListener("change", handleSystemThemeChange);
-  window
-    .matchMedia("(prefers-color-scheme: light)")
-    .addEventListener("change", handleSystemThemeChange);
-});
-
-const inputBoxProbId = document.getElementById("input-box-prob-id");
-const inputBoxProbName = document.getElementById("input-box-prob-name");
-const submitButtonProbId = document.getElementById("submit-button-prob-id");
-const submitButtonProbName = document.getElementById("submit-button-prob-name");
-
 function openLink(url) {
   var popUp = window.open(url);
   if (!popUp || popUp.closed || typeof popUp.closed == "undefined") {
@@ -195,136 +6,158 @@ function openLink(url) {
   }
 }
 
-submitButtonProbId.addEventListener("click", function () {
-  const judgeSelectorProbId = document.getElementById("judge-selector-prob-id");
-  const inputValue = inputBoxProbId.value;
+const probIdRule = {
+  lg: /^[BP]?\d{4,5}$/,
+  lib: /^[#]?\d{1,5}$/,
+  cf: /^(\d{1,4})([a-zA-Z])([1-9]?)$/,
+  uoj: /^[#]?\d{1,3}$/,
+  pku: /^[#]?\d{4}$/,
+  hdu: /^[#]?\d{4}$/,
+  bz: /^[P]?\d{3,5}$/,
+};
 
-  if (!inputValue) {
+const inputPid = document.getElementById("input-pid");
+const inputPna = document.getElementById("input-pna");
+const submitPid = document.getElementById("submit-pid");
+const submitPna = document.getElementById("submit-pna");
+
+submitPid.addEventListener("click", () => {
+  const selectPid = document.getElementById("select-pid");
+  const text = inputPid.value;
+
+  if (!text) {
     const alert = document.getElementById("iid");
     alert.showModal();
     return;
   }
 
-  if (inputValue === "114514") {
+  if (text === "114514") {
     window.location.href = "https://www.bilibili.com/video/BV1GJ411x7h7/";
     return;
   }
 
-  if (judgeSelectorProbId.value === "lg") {
-    const re = /^[BP]?\d{4,5}$/;
-    if (re.test(inputValue)) {
+  if (selectPid.value === "lg") {
+    const re = probIdRule.lg;
+    if (re.test(text)) {
       var baseUrl = "https://www.luogu.com.cn/problem/";
-      if (inputValue[0] !== "P" && inputValue[0] !== "B") baseUrl = baseUrl + "P";
-      openLink(baseUrl + inputValue);
-      return;
+      if (text[0] !== "P" && text[0] !== "B") baseUrl = baseUrl + "P";
+      openLink(baseUrl + text);
     }
-  } else if (judgeSelectorProbId.value === "lib") {
-    const re = /^[#]?\d{1,5}$/;
-    if (re.test(inputValue)) {
-      var probId = inputValue;
-      if (inputValue[0] === "#") probId = inputValue.substring(1);
+  } else if (selectPid.value === "lib") {
+    const re = probIdRule.lib;
+    if (re.test(text)) {
+      var probId = text;
+      if (text[0] === "#") probId = text.substring(1);
       openLink("https://loj.ac/p/" + probId);
-      return;
     }
-  } else if (judgeSelectorProbId.value === "cf") {
-    const re = /^(\d{1,4})([a-zA-Z])([1-9]?)$/;
-    if (re.test(inputValue)) {
-      const match = re.exec(inputValue);
-      if (!match[3])
-        openLink("https://codeforces.com/problemset/problem/" + match[1] + "/" + match[2]);
-      else
-        openLink(
-          "https://codeforces.com/problemset/problem/" + match[1] + "/" + match[2] + match[3],
-        );
-      return;
+  } else if (selectPid.value === "cf") {
+    const re = probIdRule.cf;
+    if (re.test(text)) {
+      const match = re.exec(text);
+      if (!match[3]) openLink("https://codeforces.com/problemset/problem/" + match[1] + "/" + match[2]);
+      else openLink("https://codeforces.com/problemset/problem/" + match[1] + "/" + match[2] + match[3]);
     }
-  } else if (judgeSelectorProbId.value === "uoj") {
-    const re = /^[#]?\d{1,3}$/;
-    if (re.test(inputValue)) {
-      var probId = inputValue;
-      if (inputValue[0] === "#") probId = inputValue.substring(1);
+  } else if (selectPid.value === "uoj") {
+    const re = probIdRule.uoj;
+    if (re.test(text)) {
+      var probId = text;
+      if (text[0] === "#") probId = text.substring(1);
       openLink("https://uoj.ac/problem/" + probId);
-      return;
     }
-  } else if (judgeSelectorProbId.value === "pku") {
-    const re = /^[#]?\d{4}$/;
-    if (re.test(inputValue)) {
-      var probId = inputValue;
+  } else if (selectPid.value === "pku") {
+    const re = probIdRule.pku;
+    if (re.test(text)) {
+      var probId = text;
       openLink("http://poj.org/problem?id=" + probId);
-      return;
     }
-  } else if (judgeSelectorProbId.value === "hdu") {
-    const re = /^[#]?\d{4}$/;
-    if (re.test(inputValue)) {
-      var probId = inputValue;
+  } else if (selectPid.value === "hdu") {
+    const re = probIdRule.hdu;
+    if (re.test(text)) {
+      var probId = text;
       openLink("https://acm.hdu.edu.cn/showproblem.php?pid=" + probId);
-      return;
     }
-  } else if (judgeSelectorProbId.value === "bz") {
-    const re = /^[P]?\d{3,5}$/;
-    if (re.test(inputValue)) {
+  } else if (selectPid.value === "bz") {
+    const re = probIdRule.bz;
+    if (re.test(text)) {
       var baseUrl = "https://new.bzoj.org:88/p/";
-      if (inputValue[0] !== "P") baseUrl = baseUrl + "P";
-      openLink(baseUrl + inputValue);
-      return;
+      if (text[0] !== "P") baseUrl = baseUrl + "P";
+      openLink(baseUrl + text);
     }
-  } else if (judgeSelectorProbId.value === "sp") {
-    openLink(`https://www.spoj.com/problems/${inputValue}/`);
-    return;
-  } else if (judgeSelectorProbId.value === "dm") {
-    openLink(`https://dmoj.ca/problem/${inputValue}`);
-    return;
-  } else if (judgeSelectorProbId.value === "vj") {
-    openLink(`https://vjudge.net/problem/${inputValue}`);
+  } else if (selectPid.value === "sp") openLink(`https://www.spoj.com/problems/${text}/`);
+  else if (selectPid.value === "dm") openLink(`https://dmoj.ca/problem/${text}`);
+  else if (selectPid.value === "vj") openLink(`https://vjudge.net/problem/${text}`);
+});
+
+inputPid.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") submitPid.click();
+});
+
+inputPid.addEventListener("input", () => {
+  const selectPid = document.getElementById("select-pid");
+  const text = inputPid.value;
+
+  if (!text) {
+    inputPid.classList.remove("input-error");
+    submitPid.classList.add("btn-disabled");
+    submitPid.classList.remove("btn-active");
+    submitPid.setAttribute("tabindex", "-1");
     return;
   }
 
-  const alert = document.getElementById("iid");
-  alert.showModal();
-});
+  var reg = selectPid.value in probIdRule ? probIdRule[selectPid.value] : /[\s\S]*/;
 
-inputBoxProbId.addEventListener("keydown", function (event) {
-  if (event.key === "Enter") {
-    submitButtonProbId.click();
+  if (!text !== "114514" && !reg.test(text)) {
+    inputPid.classList.add("input-error");
+    submitPid.classList.add("btn-disabled");
+    submitPid.classList.remove("btn-active");
+    submitPid.setAttribute("tabindex", "-1");
+  } else {
+    inputPid.classList.remove("input-error");
+    submitPid.classList.add("btn-active");
+    submitPid.classList.remove("btn-disabled");
+    submitPid.setAttribute("tabindex", "0");
   }
 });
 
-submitButtonProbName.addEventListener("click", function () {
-  const judgeSelectorProbName = document.getElementById("judge-selector-prob-name");
-  const inputValue = inputBoxProbName.value;
+submitPna.addEventListener("click", () => {
+  const selectPna = document.getElementById("select-pna");
+  const text = inputPna.value;
 
-  if (!inputValue) {
+  if (!text) {
     const alert = document.getElementById("itm");
     alert.showModal();
     return;
   }
 
-  var formedUrl;
+  var tar;
 
-  if (judgeSelectorProbName.value === "lg") {
-    formedUrl = `https://www.luogu.com.cn/problem/list?keyword=${inputValue}&type=B|P&page=1`;
-  } else if (judgeSelectorProbName.value === "lib") {
-    formedUrl = `https://loj.ac/p?keyword=${inputValue}`;
-  } else if (judgeSelectorProbName.value === "bz") {
-    formedUrl = `https://new.bzoj.org:88/p?q=${inputValue}`;
-  } else if (judgeSelectorProbName.value === "acw") {
-    formedUrl = `https://www.acwing.com/problem/search/1/?search_content=${inputValue}`;
-  } else if (judgeSelectorProbName.value === "dm") {
-    formedUrl = `https://dmoj.ca/problems/?search=${inputValue}`;
-  } else if (judgeSelectorProbName.value === "uoj") {
-    formedUrl = `https://uoj.ac/problems?search=${inputValue}`;
-  } else if (judgeSelectorProbName.value === "cf") {
-    formedUrl = `https://www.google.com/search?q=${inputValue}+site%3Acodeforces.com`;
-  } else if (judgeSelectorProbName.value === "at") {
-    formedUrl = `https://www.google.com/search?q=${inputValue}+site%3Aatcoder.jp`;
-  }
+  if (selectPna.value === "lg") tar = `https://www.luogu.com.cn/problem/list?keyword=${text}&type=B|P&page=1`;
+  else if (selectPna.value === "lib") tar = `https://loj.ac/p?keyword=${text}`;
+  else if (selectPna.value === "bz") tar = `https://new.bzoj.org:88/p?q=${text}`;
+  else if (selectPna.value === "acw") tar = `https://www.acwing.com/problem/search/1/?search_content=${text}`;
+  else if (selectPna.value === "dm") tar = `https://dmoj.ca/problems/?search=${text}`;
+  else if (selectPna.value === "uoj") tar = `https://uoj.ac/problems?search=${text}`;
+  else if (selectPna.value === "cf") tar = `https://www.google.com/search?q=${text}+site%3Acodeforces.com`;
+  else if (selectPna.value === "at") tar = `https://www.google.com/search?q=${text}+site%3Aatcoder.jp`;
 
-  openLink(formedUrl);
+  openLink(tar);
 });
 
-inputBoxProbName.addEventListener("keydown", function (event) {
-  if (event.key === "Enter") {
-    submitButtonProbName.click();
+inputPna.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") submitPna.click();
+});
+
+inputPna.addEventListener("input", () => {
+  const inputValue = inputPna.value;
+
+  if (!inputValue) {
+    submitPna.classList.add("btn-disabled");
+    submitPna.classList.remove("btn-active");
+    submitPna.setAttribute("tabindex", "-1");
+  } else {
+    submitPna.classList.add("btn-active");
+    submitPna.classList.remove("btn-disabled");
+    submitPna.setAttribute("tabindex", "0");
   }
 });
 
