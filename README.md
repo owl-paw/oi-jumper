@@ -4,15 +4,14 @@ The tool that allows you to efficiently jump to any CP problem on various platfo
 
 ## Usage
 
-Head to the website of this tool: [oi-jumper.vercel.app](https://oi-jumper.vercel.app). In case this is your first visit to the site, note that the default language is Simplified Chinese, and you might want to view the site in English by clicking on the language switcher on the bottom.
+Head to the website of this tool: [oi-jumper.vercel.app](https://oi-jumper.vercel.app). In case this is your first visit to the site, note that the default language is Simplified Chinese, and you might want to view the site in English by clicking on the language switcher on the bottom. Also, for certain security-oriented browsers (e.g. Safari and Firefox), you might have to explicitly allow the site to send pop-ups so that the requested webpage won't be blocked from opening. We promise that pop-ups in this site are only sent in response to actions requested by the user.
 
-Select the CP platform in which your requested programming problem is hosted[^1]. Then type in the problem ID, or a search term that'll be fed into the platform's search mechanism[^2]. Then click on the button or slam <kbd>Enter</kbd> to **JUMP** to your destination.
+Select the CP platform in which your requested programming problem is hosted[^1]. Then type in the problem ID, or a search term that'll be fed into the platform's search engine[^2]. Then click the corresponding button or slam <kbd>Enter</kbd> to **JUMP** to your destination.
 
 [^1]: If you can't find the platform you need, it's welcomed to open an issue or submit a pull request.
+[^2]: For platforms that don't support in-site searching, we'll instead use plain old Google or Bing (depending on the chosen language), but specify the `site` tag to filter the results.
 
-[^2]: For platforms that don't support for in-site searching, we'll instead use plain old Google search, but specify the `site` tag to filter the results.
-
-## Contribution
+## Contributing
 
 OI Jumper is a static site built using Tailwind and daisyUI. This is my first attempt at using a web framework to develop projects, and I feel very good about the combo of these two.
 
