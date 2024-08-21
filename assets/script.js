@@ -32,7 +32,7 @@ submitPid.addEventListener("click", () => {
   }
 
   if (text === "114514") {
-    window.location.href = "https://www.bilibili.com/video/BV1GJ411x7h7/";
+    window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
     return;
   }
 
