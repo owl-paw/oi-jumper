@@ -19,16 +19,17 @@
     <!-- Page Title -->
     <header class="mt-8 flex-col text-center sm:mt-14">
       <h1 class="text-5xl font-bold text-primary sm:text-[5rem]">
-        <a href="#">OI Jumper</a>
+        OI Jumper
       </h1>
       <p class="mt-3 text-base text-base-content sm:mt-6 sm:text-xl">
-        made with <span id="the-word" class="text-primary"></span> by owlpaw
+        made with <span id="the-word" class="text-primary font-bold"></span> by owlpaw
       </p>
     </header>
 
     <!-- Problem Jumper  -->
     <section class="input-suite mt-6 sm:mt-10">
-      <select id="select-pid" class="select select-bordered select-sm transition-all sm:select-md">
+      <select id="select-pid" class="select select-bordered select-sm sm:select-md">
+        <option value="at">AtCoder</option>
         <option value="bz">BZOJ</option>
         <option value="cf">Codeforces</option>
         <option value="dm">DMOJ</option>
@@ -40,17 +41,17 @@
         <option value="uoj">UniversalOJ</option>
         <option value="vj">Virtual Judge</option>
       </select>
-      <input id="input-pid" class="input input-sm input-bordered transition-all sm:input-md" />
+      <input id="input-pid" class="input input-sm input-bordered transition-colors sm:input-md" />
       <button
         id="submit-pid"
         tabindex="-1"
-        class="btn btn-disabled btn-primary btn-sm mx-1 transition-all sm:btn-md sm:mx-2"
+        class="btn btn-disabled btn-primary btn-sm mx-1 transition-colors sm:btn-md sm:mx-2"
       ></button>
     </section>
 
     <!-- Problem Name Search -->
     <section class="input-suite mt-2 sm:mt-4">
-      <select id="select-pna" class="select select-bordered select-sm transition-all sm:select-md">
+      <select id="select-pna" class="select select-bordered select-sm sm:select-md">
         <option value="acw">AcWing</option>
         <option value="at">AtCoder</option>
         <option value="bz">BZOJ</option>
@@ -60,65 +61,73 @@
         <option value="lg" selected>Luogu 洛谷</option>
         <option value="uoj">UniversalOJ</option>
       </select>
-      <input id="input-pna" class="input input-sm input-bordered transition-all sm:input-md" />
+      <input id="input-pna" class="input input-sm input-bordered transition-colors sm:input-md" />
       <button
         id="submit-pna"
         tabindex="-1"
-        class="btn btn-disabled btn-primary btn-sm mx-1 transition-all sm:btn-md sm:mx-2"
+        class="btn btn-disabled btn-primary btn-sm mx-1 transition-colors sm:btn-md sm:mx-2"
       ></button>
     </section>
 
     <footer class="mb-3 mt-auto text-center sm:mb-6">
-      <div id="more-info" style="visibility: hidden">
-        <button
-          class="btn btn-outline btn-primary btn-xs mx-0.5 mb-2 sm:btn-sm sm:mb-0"
-          onclick="window.open(`https://github.com/owl-paw/oi-jumper`)"
+      <a class="btn btn-xs mx-0.5 mb-2 sm:btn-sm sm:mb-0" href="https://github.com/owl-paw/oi-jumper">
+        <span id="github"></span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="20px"
+          viewBox="0 -960 960 960"
+          width="20px"
+          class="fill-base-content"
         >
-          <span id="github"></span>
-        </button>
-        <button
-          class="btn btn-outline btn-primary btn-xs mx-0.5 mb-2 sm:btn-sm sm:mb-0"
-          onclick="window.open(`https://afdian.com/a/owlpaw/plan`)"
+          <path
+            d="M216-144q-29.7 0-50.85-21.15Q144-186.3 144-216v-528q0-29.7 21.15-50.85Q186.3-816 216-816h264v72H216v528h528v-264h72v264q0 29.7-21.15 50.85Q773.7-144 744-144H216Zm171-192-51-51 357-357H576v-72h240v240h-72v-117L387-336Z"
+          />
+        </svg>
+      </a>
+      <a class="btn btn-xs mx-0.5 mb-2 sm:btn-sm sm:mb-0" href="https://afdian.com/a/owlpaw/plan">
+        <span id="sponsor"></span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="20px"
+          viewBox="0 -960 960 960"
+          width="20px"
+          class="fill-base-content"
         >
-          <span id="sponsor"></span>
-        </button>
+          <path
+            d="M216-144q-29.7 0-50.85-21.15Q144-186.3 144-216v-528q0-29.7 21.15-50.85Q186.3-816 216-816h264v72H216v528h528v-264h72v264q0 29.7-21.15 50.85Q773.7-144 744-144H216Zm171-192-51-51 357-357H576v-72h240v240h-72v-117L387-336Z"
+          />
+        </svg>
+      </a>
 
-        <br class="sm:hidden" />
+      <br class="sm:hidden" />
 
-        <div class="join mx-0.5">
-          <input
-            type="radio"
-            name="theme-buttons"
-            id="system-scheme"
-            class="theme-controller btn btn-outline btn-primary join-item btn-xs sm:btn-sm"
-            value="default"
-          />
-          <input
-            type="radio"
-            name="theme-buttons"
-            id="light-scheme"
-            class="theme-controller btn btn-outline btn-primary join-item btn-xs sm:btn-sm"
-            value="light"
-          />
-          <input
-            type="radio"
-            name="theme-buttons"
-            id="dark-scheme"
-            class="theme-controller btn btn-outline btn-primary join-item btn-xs sm:btn-sm"
-            value="dark"
-          />
-        </div>
+      <div class="join mx-0.5">
+        <input
+          type="radio"
+          name="theme-buttons"
+          id="system-scheme"
+          class="theme btn join-item btn-xs sm:btn-sm"
+          value="default"
+        />
+        <input
+          type="radio"
+          name="theme-buttons"
+          id="light-scheme"
+          class="theme btn join-item btn-xs sm:btn-sm"
+          value="light"
+        />
+        <input
+          type="radio"
+          name="theme-buttons"
+          id="dark-scheme"
+          class="theme btn join-item btn-xs sm:btn-sm"
+          value="dark"
+        />
       </div>
 
-      <button
-        id="more-info-toggler"
-        class="btn btn-outline btn-primary btn-xs mx-0.5 mt-4 sm:btn-sm sm:mb-0"
-        onclick="toggleMoreInfo()"
-      ></button>
-
-      <div class="join">
+      <div class="join mx-0.5">
         <input
-          class="btn btn-outline btn-primary join-item btn-xs sm:btn-sm"
+          class="btn join-item btn-xs sm:btn-sm"
           type="radio"
           name="language-selector"
           id="chn-btn"
@@ -126,7 +135,7 @@
           aria-label="中文"
         />
         <input
-          class="btn btn-outline btn-primary join-item btn-xs sm:btn-sm"
+          class="btn join-item btn-xs sm:btn-sm"
           type="radio"
           name="language-selector"
           id="eng-btn"

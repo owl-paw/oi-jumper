@@ -7,6 +7,7 @@ const probIdRule = {
   hdu: /^[#]?\d{4}$/,
   bz: /^[P]?\d{3,5}$/,
   vj: /^\S+-\S+$/,
+  at: /^\S+_\S+$/,
 };
 
 const inputPid = document.getElementById("input-pid");
@@ -81,6 +82,9 @@ submitPid.addEventListener("click", async () => {
   } else if (selectPid.value === "vj") {
     const re = probIdRule.vj;
     if (re.test(text)) window.open(`https://vjudge.net/problem/${text}`);
+  } else if (selectPid.value === "at") {
+    const re = probIdRule.at;
+    if (re.test(text)) window.open(`https://www.luogu.com.cn/remoteJudgeRedirect/atcoder/${text}`);
   } else if (selectPid.value === "sp") {
     window.open(`https://www.spoj.com/problems/${text}/`);
   } else if (selectPid.value === "dm") {
@@ -123,23 +127,20 @@ submitPna.addEventListener("click", () => {
   const selectPna = document.getElementById("select-pna");
   const text = inputPna.value;
 
-  var tar;
-
-  if (selectPna.value === "lg") tar = `https://www.luogu.com.cn/problem/list?keyword=${text}&type=B|P&page=1`;
-  else if (selectPna.value === "lib") tar = `https://loj.ac/p?keyword=${text}`;
-  else if (selectPna.value === "bz") tar = `https://new.bzoj.org:88/p?q=${text}`;
-  else if (selectPna.value === "acw") tar = `https://www.acwing.com/problem/search/1/?search_content=${text}`;
-  else if (selectPna.value === "dm") tar = `https://dmoj.ca/problems/?search=${text}`;
-  else if (selectPna.value === "uoj") tar = `https://uoj.ac/problems?search=${text}`;
+  if (selectPna.value === "lg") window.open(`https://www.luogu.com.cn/problem/list?keyword=${text}&type=B|P&page=1`);
+  else if (selectPna.value === "lib") window.open(`https://loj.ac/p?keyword=${text}`);
+  else if (selectPna.value === "bz") window.open(`https://new.bzoj.org:88/p?q=${text}`);
+  else if (selectPna.value === "acw") window.open(`https://www.acwing.com/problem/search/1/?search_content=${text}`);
+  else if (selectPna.value === "dm") window.open(`https://dmoj.ca/problems/?search=${text}`);
+  else if (selectPna.value === "uoj") window.open(`https://uoj.ac/problems?search=${text}`);
   else if (selectPna.value === "cf") {
-    if (document.documentElement.lang === "zh") tar = `https://www.bing.com/search?q=${text}+site%3Acodeforces.com`;
-    else tar = `https://www.google.com/search?q=${text}+site%3Acodeforces.com`;
+    if (document.documentElement.lang === "zh")
+      window.open(`https://www.bing.com/search?q=${text}+site%3Acodeforces.com`);
+    else window.open(`https://www.google.com/search?q=${text}+site%3Acodeforces.com`);
   } else if (selectPna.value === "at") {
-    if (document.documentElement.lang === "zh") tar = `https://www.bing.com/search?q=${text}+site%3Aatcoder.jp`;
-    else tar = `https://www.google.com/search?q=${text}+site%3Aatcoder.jp`;
+    if (document.documentElement.lang === "zh") window.open(`https://www.bing.com/search?q=${text}+site%3Aatcoder.jp`);
+    else window.open(`https://www.google.com/search?q=${text}+site%3Aatcoder.jp`);
   }
-
-  window.open(tar);
 });
 
 inputPna.addEventListener("keydown", (event) => {
@@ -159,16 +160,3 @@ inputPna.addEventListener("input", () => {
     submitPna.setAttribute("tabindex", "0");
   }
 });
-
-const moreInfoBtn = document.getElementById("more-info-toggler");
-const moreInfo = document.getElementById("more-info");
-
-function toggleMoreInfo() {
-  if (moreInfo.style.visibility === "hidden") {
-    moreInfo.style.visibility = "visible";
-    moreInfoBtn.innerHTML = document.documentElement.lang === "en" ? "Hide Settings" : "收起设置";
-  } else {
-    moreInfo.style.visibility = "hidden";
-    moreInfoBtn.innerHTML = document.documentElement.lang === "en" ? "Show Settings" : "展开设置";
-  }
-}

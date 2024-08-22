@@ -13,8 +13,8 @@
     "open": "Show Settings",
     "collapse": "Hide Settings",
     "github": "GitHub Repo",
-    "sponsor": "Sponsor Me",
-    "auto": "System",
+    "sponsor": "Sponsor",
+    "auto": "Auto",
     "light": "Light",
     "dark": "Dark"
   }

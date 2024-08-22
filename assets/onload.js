@@ -68,8 +68,6 @@ function updatePageWithLanguageData(data) {
   document.getElementById("system-scheme").setAttribute("aria-label", data.settings.auto);
   document.getElementById("light-scheme").setAttribute("aria-label", data.settings.light);
   document.getElementById("dark-scheme").setAttribute("aria-label", data.settings.dark);
-  document.getElementById("more-info-toggler").innerHTML =
-    document.getElementById("more-info").style.visibility === "hidden" ? data.settings.open : data.settings.collapse;
 }
 
 function initLanguage() {
@@ -84,31 +82,52 @@ window.onload = function () {
 
 const words = [
   "???",
+  "css",
+  "git",
+  "svg",
   "time",
   "code",
   "love",
   "rage",
   "bugs",
+  "html",
+  "json",
+  "music",
+  "ideas",
   "faith",
   "atoms",
   "magic",
   "humor",
+  "colors",
   "regret",
   "coffee",
   "dreams",
   "hatred",
+  "vscode",
+  "node.js",
   "science",
+  "buttons",
   "respect",
   "madness",
+  "quality",
+  "daisyUI",
   "morality",
   "devotion",
+  "tailwind",
   "stupidity",
   "sacrilege",
+  "dark mode",
+  "intensity",
+  "community",
+  "simplicity",
   "dedication",
   "randomness",
   "javascript",
+  "efficiency",
+  "melancholy",
   "[REDACTED]",
   "intelligence",
+  "carelessness",
 ];
 
 function randomizeWord() {
@@ -119,7 +138,7 @@ function randomizeWord() {
 randomizeWord();
 
 document.addEventListener("DOMContentLoaded", function () {
-  const themeButtons = document.querySelectorAll(".theme-controller");
+  const themeButtons = document.querySelectorAll(".theme");
 
   function applyTheme(theme) {
     if (theme === "light") document.documentElement.setAttribute("data-theme", "light");
