@@ -1,0 +1,21 @@
+{
+  "prob_id": {
+    "input": "题目编号",
+    "btn": "跳转"
+  },
+
+  "prob_name": {
+    "input": "题目名称",
+    "btn": "搜索"
+  },
+
+  "settings": {
+    "open": "展开设置",
+    "collapse": "收起设置",
+    "github": "GitHub 仓库",
+    "sponsor": "赞助",
+    "auto": "自动",
+    "light": "浅色",
+    "dark": "深色"
+  }
+}

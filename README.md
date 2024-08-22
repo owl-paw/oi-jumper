@@ -9,6 +9,7 @@ Head to the website of this tool: [oi-jumper.vercel.app](https://oi-jumper.verce
 Select the CP platform in which your requested programming problem is hosted[^1]. Then type in the problem ID, or a search term that'll be fed into the platform's search engine[^2]. Then click the corresponding button or slam <kbd>Enter</kbd> to **JUMP** to your destination.
 
 [^1]: If you can't find the platform you need, it's welcomed to open an issue or submit a pull request.
+
 [^2]: For platforms that don't support in-site searching, we'll instead use plain old Google or Bing (depending on the chosen language), but specify the `site` tag to filter the results.
 
 ## Contributing

@@ -1,6 +1,7 @@
 {
   "type": "module",
   "devDependencies": {
-    "daisyui": "^4.12.10"
+    "daisyui": "^4.12.10",
+    "typescript": "^5.5.4"
   }
 }
