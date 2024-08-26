@@ -51,9 +51,9 @@ function updateLanguageSwitcher(lang) {
   const selectedButton = document.getElementById(lang === "zh" ? "chn-btn" : "eng-btn");
   selectedButton.setAttribute("checked", "checked");
 }
-import { updateHrefFromId, updateHrefFromName } from "./script.js";
+import { updateFromId, updateFromName } from "./script.js";
 function updatePageWithLanguageData(data) {
-  updateHrefFromId(), updateHrefFromName();
+  updateFromId(), updateFromName();
   document.getElementById("input-pid").placeholder = data.prob_id.input;
   document.getElementById("submit-pid").innerHTML = data.prob_id.btn;
   document.getElementById("input-pna").placeholder = data.prob_name.input;

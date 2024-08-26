@@ -57,10 +57,10 @@ function updateLanguageSwitcher(lang: string) {
   selectedButton.setAttribute("checked", "checked");
 }
 
-import { updateHrefFromId, updateHrefFromName } from "./script.js";
+import { updateFromId, updateFromName } from "./script.js";
 
 function updatePageWithLanguageData(data: any) {
-  updateHrefFromId(), updateHrefFromName();
+  updateFromId(), updateFromName();
 
   (document.getElementById("input-pid") as HTMLInputElement).placeholder = data.prob_id.input;
   (document.getElementById("submit-pid") as HTMLLinkElement).innerHTML = data.prob_id.btn;

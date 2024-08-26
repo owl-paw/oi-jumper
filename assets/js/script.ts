@@ -2,6 +2,8 @@ const inputPid = document.getElementById("input-pid") as HTMLInputElement;
 const inputPna = document.getElementById("input-pna") as HTMLInputElement;
 const submitPid = document.getElementById("submit-pid") as HTMLButtonElement;
 const submitPna = document.getElementById("submit-pna") as HTMLButtonElement;
+const selectPid = document.getElementById("select-pid") as HTMLSelectElement;
+const selectPna = document.getElementById("select-pna") as HTMLSelectElement;
 const catchPhraseHash = "816280b1928a963b53a78bfe4aea8275a07972b0bc9dd05e65448e3a57cb8ae1";
 
 async function sha256(message: string) {
@@ -77,8 +79,7 @@ function concatenateFromName(jdg: string, txt: string) {
   return "#";
 }
 
-export async function updateHrefFromId() {
-  const selectPid = document.getElementById("select-pid") as HTMLSelectElement;
+export async function updateFromId() {
   const text = inputPid.value;
 
   if (!text) {
@@ -123,8 +124,7 @@ export async function updateHrefFromId() {
   }
 }
 
-export async function updateHrefFromName() {
-  const selectPna = document.getElementById("select-pna") as HTMLSelectElement;
+export async function updateFromName() {
   const text = inputPna.value;
 
   if (!text) {
@@ -143,6 +143,9 @@ export async function updateHrefFromName() {
 }
 
 inputPid.addEventListener("keydown", (event) => event.key === "Enter" && submitPid.click());
-inputPid.addEventListener("input", () => updateHrefFromId());
+inputPid.addEventListener("input", () => updateFromId());
+selectPid.addEventListener("change", () => updateFromId());
+
 inputPna.addEventListener("keydown", (event) => event.key === "Enter" && submitPna.click());
-inputPna.addEventListener("input", () => updateHrefFromName());
+inputPna.addEventListener("input", () => updateFromName());
+selectPna.addEventListener("change", () => updateFromName());

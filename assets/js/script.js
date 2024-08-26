@@ -2,6 +2,8 @@ const inputPid = document.getElementById("input-pid");
 const inputPna = document.getElementById("input-pna");
 const submitPid = document.getElementById("submit-pid");
 const submitPna = document.getElementById("submit-pna");
+const selectPid = document.getElementById("select-pid");
+const selectPna = document.getElementById("select-pna");
 const catchPhraseHash = "816280b1928a963b53a78bfe4aea8275a07972b0bc9dd05e65448e3a57cb8ae1";
 async function sha256(message) {
   const msgBuffer = new TextEncoder().encode(message);
@@ -65,8 +67,7 @@ function concatenateFromName(jdg, txt) {
   if (jdg === "at") return `https://www.${lang === "zh" ? "bing" : "google"}.com/search?q=${txt}+site%3Aatcoder.jp`;
   return "#";
 }
-export async function updateHrefFromId() {
-  const selectPid = document.getElementById("select-pid");
+export async function updateFromId() {
   const text = inputPid.value;
   if (!text) {
     inputPid.classList.remove("input-error");
@@ -105,8 +106,7 @@ export async function updateHrefFromId() {
     submitPid.setAttribute("href", "#");
   }
 }
-export async function updateHrefFromName() {
-  const selectPna = document.getElementById("select-pna");
+export async function updateFromName() {
   const text = inputPna.value;
   if (!text) {
     submitPna.classList.add("btn-disabled");
@@ -123,6 +123,8 @@ export async function updateHrefFromName() {
   }
 }
 inputPid.addEventListener("keydown", (event) => event.key === "Enter" && submitPid.click());
-inputPid.addEventListener("input", () => updateHrefFromId());
+inputPid.addEventListener("input", () => updateFromId());
+selectPid.addEventListener("change", () => updateFromId());
 inputPna.addEventListener("keydown", (event) => event.key === "Enter" && submitPna.click());
-inputPna.addEventListener("input", () => updateHrefFromName());
+inputPna.addEventListener("input", () => updateFromName());
+selectPna.addEventListener("change", () => updateFromName());
