@@ -120,11 +120,7 @@ const words = [
   "intelligence",
   "carelessness",
 ];
-function randomizeWord() {
-  const randomWord = words[Math.floor(Math.random() * words.length)];
-  document.getElementById("the-word")?.setAttribute("innerHTML", randomWord);
-}
-randomizeWord();
+document.getElementById("the-word").innerHTML = words[Math.floor(Math.random() * words.length)];
 document.addEventListener("DOMContentLoaded", function () {
   const themeButtons = document.querySelectorAll(".theme");
   function applyTheme(theme) {

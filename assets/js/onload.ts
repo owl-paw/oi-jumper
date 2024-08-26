@@ -83,7 +83,7 @@ function initLanguage() {
 
 window.onload = () => (initLanguage(), cacheLanguageFiles());
 
-const words = [
+const words: Array<string> = [
   "???",
   "css",
   "git",
@@ -133,12 +133,7 @@ const words = [
   "carelessness",
 ];
 
-function randomizeWord() {
-  const randomWord = words[Math.floor(Math.random() * words.length)];
-  document.getElementById("the-word")?.setAttribute("innerHTML", randomWord);
-}
-
-randomizeWord();
+(document.getElementById("the-word") as HTMLSpanElement).innerHTML = words[Math.floor(Math.random() * words.length)];
 
 document.addEventListener("DOMContentLoaded", function () {
   const themeButtons = document.querySelectorAll(".theme");
