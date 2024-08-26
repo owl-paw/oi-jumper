@@ -1,8 +1,8 @@
 const cacheName = "i18n-cache-v1";
 
 const languageFiles: { [index: string]: string } = {
-  en: "./assets/lang/en.json",
-  zh: "./assets/lang/zh.json",
+  en: "./assets/en.json",
+  zh: "./assets/zh.json",
 };
 
 function cacheLanguageFiles() {
@@ -151,8 +151,8 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadIconColor() {
     const favicon = document.querySelector("link[rel='icon']");
     if (window.matchMedia("(prefers-color-scheme: dark)").matches)
-      favicon?.setAttribute("href", "./assets/resources/icon-dark.svg");
-    else favicon?.setAttribute("href", "./assets/resources/icon.svg");
+      favicon?.setAttribute("href", "./assets/icon-dark.svg");
+    else favicon?.setAttribute("href", "./assets/icon.svg");
   }
 
   function handleSystemThemeChange() {

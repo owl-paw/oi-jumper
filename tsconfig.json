@@ -5,8 +5,8 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "outDir": "./assets/js"
+    "outDir": "./public/assets/"
   },
-  "include": ["./assets/js/*.ts"],
+  "include": ["./assets/*.ts"],
   "exclude": ["node_modules"]
 }

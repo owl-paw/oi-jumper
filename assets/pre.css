@@ -7,7 +7,7 @@
     font-family: "JetBrains Mono";
     font-style: normal;
     font-display: swap;
-    src: url("../resources/JetBrainsMono.woff2") format("woff2-variations");
+    src: url("./JetBrainsMono.woff2") format("woff2-variations");
     font-weight: 400 700;
   }
 
