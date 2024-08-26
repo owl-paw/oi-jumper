@@ -1,4 +1,3 @@
-"use strict";
 const cacheName = "i18n-cache-v1";
 const languageFiles = {
   en: "./assets/lang/en.json",
@@ -21,14 +20,13 @@ function loadLanguage(lang) {
   if ("caches" in window) {
     caches
       .match(url)
-      .then((response) => {
+      .then(async (response) => {
         if (response) {
           return response.json();
         } else {
-          return fetch(url).then((response) => {
-            caches.open(cacheName).then((cache) => cache.put(url, response.clone()));
-            return response.json();
-          });
+          const response_1 = await fetch(url);
+          await caches.open(cacheName).then((cache) => cache.put(url, response_1.clone()));
+          return await response_1.json();
         }
       })
       .then((data) => {
@@ -53,7 +51,9 @@ function updateLanguageSwitcher(lang) {
   const selectedButton = document.getElementById(lang === "zh" ? "chn-btn" : "eng-btn");
   selectedButton.setAttribute("checked", "checked");
 }
+import { updateHrefFromId, updateHrefFromName } from "./script.js";
 function updatePageWithLanguageData(data) {
+  updateHrefFromId(), updateHrefFromName();
   document.getElementById("input-pid").placeholder = data.prob_id.input;
   document.getElementById("submit-pid").innerHTML = data.prob_id.btn;
   document.getElementById("input-pna").placeholder = data.prob_name.input;

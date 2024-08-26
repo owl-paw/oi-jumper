@@ -17,19 +17,3 @@
     -moz-osx-font-smoothing: grayscale;
   }
 }
-
-@layer components {
-  .input-suite {
-    @apply flex w-screen min-w-0 justify-center;
-  }
-
-  #select-pid,
-  #select-pna {
-    @apply mx-1 min-w-24 basis-24 sm:mx-2 sm:min-w-32 sm:basis-40;
-  }
-
-  #input-pid,
-  #input-pna {
-    @apply mx-1.5 min-w-32 max-w-80 basis-60 sm:mx-2 sm:basis-80;
-  }
-}

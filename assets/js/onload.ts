@@ -24,14 +24,13 @@ function loadLanguage(lang: string) {
   if ("caches" in window) {
     caches
       .match(url)
-      .then((response) => {
+      .then(async (response) => {
         if (response) {
           return response.json();
         } else {
-          return fetch(url).then((response) => {
-            caches.open(cacheName).then((cache) => cache.put(url, response.clone()));
-            return response.json();
-          });
+          const response_1 = await fetch(url);
+          await caches.open(cacheName).then((cache) => cache.put(url, response_1.clone()));
+          return await response_1.json();
         }
       })
       .then((data) => {
@@ -58,11 +57,15 @@ function updateLanguageSwitcher(lang: string) {
   selectedButton.setAttribute("checked", "checked");
 }
 
+import { updateHrefFromId, updateHrefFromName } from "./script.js";
+
 function updatePageWithLanguageData(data: any) {
+  updateHrefFromId(), updateHrefFromName();
+
   (document.getElementById("input-pid") as HTMLInputElement).placeholder = data.prob_id.input;
-  (document.getElementById("submit-pid") as HTMLButtonElement).innerHTML = data.prob_id.btn;
+  (document.getElementById("submit-pid") as HTMLLinkElement).innerHTML = data.prob_id.btn;
   (document.getElementById("input-pna") as HTMLInputElement).placeholder = data.prob_name.input;
-  (document.getElementById("submit-pna") as HTMLButtonElement).innerHTML = data.prob_name.btn;
+  (document.getElementById("submit-pna") as HTMLLinkElement).innerHTML = data.prob_name.btn;
   (document.getElementById("github") as HTMLLinkElement).innerHTML = data.settings.github;
   (document.getElementById("sponsor") as HTMLLinkElement).innerHTML = data.settings.sponsor;
   (document.getElementById("system-scheme") as HTMLInputElement).ariaLabel = data.settings.auto;
