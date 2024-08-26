@@ -64,14 +64,13 @@ function updatePageWithLanguageData(data) {
   document.getElementById("light-scheme").ariaLabel = data.settings.light;
   document.getElementById("dark-scheme").ariaLabel = data.settings.dark;
 }
+document.getElementById("chn-btn").addEventListener("click", () => loadLanguage("zh"));
+document.getElementById("eng-btn").addEventListener("click", () => loadLanguage("en"));
 function initLanguage() {
   const savedLang = localStorage.getItem("preferredLanguage") || "zh";
   loadLanguage(savedLang);
 }
-window.onload = function () {
-  initLanguage();
-  cacheLanguageFiles();
-};
+window.onload = () => (initLanguage(), cacheLanguageFiles());
 const words = [
   "???",
   "css",

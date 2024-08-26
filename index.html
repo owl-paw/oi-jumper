@@ -13,10 +13,12 @@
     <title>OI Jumper</title>
     <link href="./assets/styles/main.css" rel="stylesheet" />
     <link rel="icon" type="image/svg" href="./assets/resources/icon.svg" />
+
+    <script src="./assets/js/onload.js" type="module"></script>
+    <script src="./assets/js/script.js" type="module"></script>
   </head>
 
   <body class="flex h-screen w-screen flex-col items-center bg-base-100 font-mono">
-    <!-- Page Title -->
     <header class="mt-8 flex-col text-center sm:mt-14">
       <h1 class="text-5xl font-bold text-primary sm:text-[5rem]">OI Jumper</h1>
       <p class="mt-3 text-base text-base-content sm:mt-6 sm:text-xl">
@@ -24,7 +26,6 @@
       </p>
     </header>
 
-    <!-- Problem Jumper  -->
     <section class="mt-6 flex w-screen min-w-0 justify-center sm:mt-10">
       <select
         id="select-pid"
@@ -55,7 +56,6 @@
       ></a>
     </section>
 
-    <!-- Problem Name Search -->
     <section class="mt-2 flex w-screen min-w-0 justify-center sm:mt-4">
       <select
         id="select-pna"
@@ -145,7 +145,6 @@
           type="radio"
           name="language-selector"
           id="chn-btn"
-          onclick="loadLanguage('zh')"
           aria-label="中文"
         />
         <input
@@ -153,13 +152,9 @@
           type="radio"
           name="language-selector"
           id="eng-btn"
-          onclick="loadLanguage('en')"
           aria-label="English"
         />
       </div>
     </footer>
-
-    <script src="./assets/js/onload.js" type="module"></script>
-    <script src="./assets/js/script.js" type="module"></script>
   </body>
 </html>

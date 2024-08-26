@@ -73,15 +73,15 @@ function updatePageWithLanguageData(data: any) {
   (document.getElementById("dark-scheme") as HTMLInputElement).ariaLabel = data.settings.dark;
 }
 
+(document.getElementById("chn-btn") as HTMLInputElement).addEventListener("click", () => loadLanguage("zh"));
+(document.getElementById("eng-btn") as HTMLInputElement).addEventListener("click", () => loadLanguage("en"));
+
 function initLanguage() {
   const savedLang = localStorage.getItem("preferredLanguage") || "zh";
   loadLanguage(savedLang);
 }
 
-window.onload = function () {
-  initLanguage();
-  cacheLanguageFiles();
-};
+window.onload = () => (initLanguage(), cacheLanguageFiles());
 
 const words = [
   "???",
