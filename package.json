@@ -2,6 +2,16 @@
   "type": "module",
   "devDependencies": {
     "daisyui": "^4.12.10",
+    "prettier": "^3.3.3",
+    "prettier-plugin-tailwindcss": "^0.6.6",
     "typescript": "^5.5.4"
+  },
+  "scripts": {
+    "serve": "live-server",
+    "typescript": "tsc -w",
+    "tailwind": "npx tailwindcss -i ./assets/styles/pre.css -o ./assets/styles/main.css --watch",
+    "format": "prettier \"**/*.{ts,html,json,md}\" ./assets/styles/pre.css ./tailwind.config.js --write",
+    "build": "tsc && npx tailwindcss -i ./assets/styles/pre.css -o ./assets/styles/main.css --minify && uglifyjs --compress -o ./assets/js/onload.js -- ./assets/js/onload.js && uglifyjs --compress -o ./assets/js/script.js -- ./assets/js/script.js",
+    "dev": "npm-run-all --parallel serve tailwind typescript"
   }
 }
